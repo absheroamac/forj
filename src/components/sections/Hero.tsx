@@ -1,0 +1,170 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/animations/Reveal";
+
+interface HeroProps {
+  price?: number;
+  seats?: number;
+}
+
+export function Hero({ price = 999, seats = 20 }: HeroProps) {
+  return (
+    <section
+      id="top"
+      className="relative bg-[#0A0A0A] w-full min-h-[calc(100vh-74px)] flex flex-col justify-between overflow-hidden border-b border-white/[0.08]"
+    >
+      {/* 2-Column Split Background: Left Image (full top-to-bottom) + Right Black */}
+      <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 w-full h-full pointer-events-none">
+        {/* Left Column Full-Height Image */}
+        <div className="relative w-full h-full overflow-hidden">
+          <Image
+            src="/hero-img.png"
+            alt="FORJ Athlete Training"
+            fill
+            priority
+            className="object-cover object-center contrast-[1.08] brightness-[0.92]"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+
+          {/* Seamless right-side gradient fade */}
+          <div className="absolute inset-y-0 right-0 w-44 bg-gradient-to-r from-transparent via-[#0A0A0A]/60 to-[#0A0A0A] hidden lg:block" />
+
+          {/* Top & Bottom gradient vignettes */}
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0A0A0A]/80 via-[#0A0A0A]/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
+
+          {/* Mobile dark overlay for legibility */}
+          <div className="absolute inset-0 bg-[#0A0A0A]/60 lg:hidden" />
+        </div>
+
+        {/* Right Column: Pure Black */}
+        <div className="hidden lg:block bg-[#0A0A0A] w-full h-full" />
+      </div>
+
+      {/* Foreground Content Container */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(24px,3.5vh,48px)] pb-[clamp(24px,3.5vh,44px)] flex flex-col justify-between flex-1">
+        {/* Centered Massive Title Text */}
+        <Reveal duration={0.8} delay={0.1} className="w-full flex justify-center text-center">
+          <h1 className="m-0 font-semibold text-[clamp(48px,9.4vw,164px)] leading-[0.88] tracking-[-0.048em] text-white text-center mx-auto whitespace-normal md:whitespace-nowrap">
+            A dojo, not a gym
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{
+                duration: 1.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="text-[#FE4C02] inline-block"
+            >
+              .
+            </motion.span>
+          </h1>
+        </Reveal>
+
+        {/* 2-Column Body Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-end mt-auto pt-6 pb-2">
+          {/* Left Column Spacer (Allows athlete visual to show through) */}
+          <div className="hidden lg:block pointer-events-none" />
+
+          {/* Right Column Copy & Actions */}
+          <div className="flex flex-col justify-end lg:pl-6 pb-2">
+            <Reveal duration={0.7} delay={0.25}>
+              <p className="m-0 font-normal text-[clamp(17px,1.5vw,23px)] leading-[1.42] tracking-[-0.015em] text-white max-w-[480px]">
+                Small-group coached strength in Meydan. Eight people to a class,
+                an eight-week cycle, and a coach who knows your name.
+              </p>
+            </Reveal>
+
+            <Reveal duration={0.7} delay={0.35}>
+              <p className="m-0 mt-4 lg:mt-5 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[420px]">
+                Trained for years or it&apos;s day one you train the same way
+                here. With a plan, with weekly progression, and with people who
+                show up beside you
+              </p>
+            </Reveal>
+
+            {/* Action Buttons Row */}
+            <Reveal duration={0.7} delay={0.45}>
+              <div className="flex items-center gap-4 flex-wrap mt-[clamp(20px,2.8vh,36px)]">
+                <Button
+                  href="#waitlist"
+                  variant="outline"
+                  size="lg"
+                  className="bg-[#0A0A0A] text-white border border-[#FE4C02] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
+                >
+                  JOIN THE WAITLIST
+                </Button>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+
+      {/* Integrated Architectural Founding Rate Bar Stripe at Bottom of Hero */}
+      <div className="relative z-10 w-full border-t border-white/10 bg-[#0A0A0A]/95 backdrop-blur-md py-2 sm:py-3">
+        <div className="w-full max-w-[1600px] mx-auto px-[clamp(16px,2.5vw,48px)]">
+          <Reveal duration={0.6}>
+            <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-y-4 gap-x-2 sm:gap-x-4">
+              {/* Item 1: 20 Seats */}
+              <div className="flex items-center gap-3 sm:gap-4 py-2 pr-4 lg:pr-8">
+                <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
+                  {seats}
+                </span>
+                <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
+                  <span>seats in the</span>
+                  <span className="text-white font-medium">founding tier —</span>
+                  <span>first month free</span>
+                </div>
+              </div>
+
+              {/* Hairline Divider */}
+              <div className="h-8 lg:h-10 border-r border-white/15 hidden sm:block flex-none" />
+
+              {/* Item 2: 999 AED */}
+              <div className="flex items-center gap-3 sm:gap-4 py-2 px-2 sm:px-4 lg:px-8">
+                <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
+                  {price}
+                </span>
+                <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
+                  <span className="text-white font-medium">AED / month,</span>
+                  <span>locked for life</span>
+                </div>
+              </div>
+
+              {/* Hairline Divider */}
+              <div className="h-8 lg:h-10 border-r border-white/15 hidden md:block flex-none" />
+
+              {/* Item 3: 8 Week Cycles */}
+              <div className="flex items-center gap-3 sm:gap-4 py-2 px-2 sm:px-4 lg:px-8">
+                <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
+                  8
+                </span>
+                <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
+                  <span className="text-white font-medium">week cycles,</span>
+                  <span>capped at 8 per</span>
+                  <span>class</span>
+                </div>
+              </div>
+
+              {/* Item 4: Become a founding member Box Button */}
+              <Link
+                href="#offer"
+                className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-white/20 hover:border-[#FE4C02] hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] transition-all duration-200 cursor-pointer lg:ml-auto rounded-none"
+              >
+                <span className="font-bold text-[15px] sm:text-[16px] lg:text-[17px] tracking-[0.02em] not-italic leading-none">
+                  Become a founding member
+                </span>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
