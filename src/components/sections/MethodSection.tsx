@@ -29,17 +29,17 @@ const PARALLAX_SLIDES = [
     number: "02",
   },
   {
-    id: "strength-lab",
-    image: "/images/founding-gym.png",
-    title: "Strength Bay",
-    subtitle: "Custom Racks & Platforms",
-    number: "03",
-  },
-  {
     id: "conditioning",
     image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?fm=jpg&q=80&w=2000",
     title: "Conditioning Arena",
     subtitle: "Concept2 & Skillmills",
+    number: "03",
+  },
+  {
+    id: "small-group",
+    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?fm=jpg&q=80&w=2000",
+    title: "Eight-Seat Cohort",
+    subtitle: "Coached Progression",
     number: "04",
   },
 ];
