@@ -108,13 +108,13 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
         <div className="w-full max-w-[1600px] mx-auto px-[clamp(16px,2.5vw,48px)]">
           <Reveal duration={0.6}>
             <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-y-4 gap-x-2 sm:gap-x-4">
-              {/* Item 1: 20 founder numbers */}
+              {/* Item 1: 20 founding memberships */}
               <div className="flex items-center gap-3 sm:gap-4 py-2 pr-4 lg:pr-8">
                 <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
                   {seats}
                 </span>
                 <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span className="text-white font-medium">founder numbers.</span>
+                  <span className="text-white font-medium">founding memberships.</span>
                   <span>Once. Never repeated.</span>
                 </div>
               </div>
@@ -147,13 +147,13 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
                 </div>
               </div>
 
-              {/* Item 4: Claim a founder number Box Button */}
+              {/* Item 4: Claim founding membership Box Button */}
               <Link
                 href="#offer"
                 className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-white/20 hover:border-[#FE4C02] hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] transition-all duration-200 cursor-pointer lg:ml-auto rounded-none"
               >
                 <span className="font-bold text-[14px] sm:text-[15px] lg:text-[16px] tracking-[0.04em] uppercase not-italic leading-none">
-                  Claim a founder number
+                  Claim founding membership
                 </span>
               </Link>
             </div>

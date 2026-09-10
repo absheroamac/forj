@@ -30,7 +30,7 @@ export function FoundingOffer({
 
           <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[440px] lg:ml-auto">
             <p className="m-0 font-normal text-[clamp(13.5px,1vw,15px)] leading-[1.65] text-[#8C8A86]">
-              A founder number is a bet on the room before the doors open — and the only time this rate will ever exist. Twenty numbers. When they&apos;re gone, they&apos;re gone for good.
+              A founding membership is a bet on the room before the doors open — and the only time this rate will ever exist. Twenty spots. When they&apos;re gone, they&apos;re gone for good.
             </p>
           </Reveal>
         </div>
@@ -99,7 +99,7 @@ export function FoundingOffer({
                   size="lg"
                   className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[13px] tracking-[0.08em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A]"
                 >
-                  CLAIM A FOUNDER NUMBER
+                  CLAIM FOUNDING MEMBERSHIP
                 </Button>
               </div>
             </Reveal>
