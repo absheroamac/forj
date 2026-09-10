@@ -3,7 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { Sparkles, ArrowUp, Check, Type } from "lucide-react";
 
-type FontVariation = "default" | "stencil-bold" | "stencil-regular";
+type FontVariation =
+  | "default"
+  | "stencil-bold"
+  | "stencil-regular"
+  | "bebas-medium";
 
 export function FontVariationToggle() {
   const [fontVariation, setFontVariation] = useState<FontVariation>("default");
@@ -16,6 +20,8 @@ export function FontVariationToggle() {
       applyFont("stencil-bold");
     } else if (saved === "stencil-regular") {
       applyFont("stencil-regular");
+    } else if (saved === "bebas-medium" || saved === "bebas-bold" as any || saved === "bebas-regular" as any) {
+      applyFont("bebas-medium");
     } else {
       applyFont("default");
     }
@@ -24,7 +30,15 @@ export function FontVariationToggle() {
   const applyFont = (variation: FontVariation) => {
     setFontVariation(variation);
     const html = document.documentElement;
-    html.classList.remove("font-stencil-titles", "font-stencil-bold", "font-stencil-regular");
+    html.classList.remove(
+      "font-stencil-titles",
+      "font-stencil-bold",
+      "font-stencil-regular",
+      "font-bebas-bold",
+      "font-bebas-medium",
+      "font-bebas-regular",
+      "font-bebas"
+    );
 
     if (variation === "stencil-bold") {
       html.classList.add("font-stencil-bold", "font-stencil-titles");
@@ -32,6 +46,9 @@ export function FontVariationToggle() {
     } else if (variation === "stencil-regular") {
       html.classList.add("font-stencil-regular");
       localStorage.setItem("forj_title_font", "stencil-regular");
+    } else if (variation === "bebas-medium") {
+      html.classList.add("font-bebas-medium", "font-bebas");
+      localStorage.setItem("forj_title_font", "bebas-medium");
     } else {
       localStorage.setItem("forj_title_font", "default");
     }
@@ -44,9 +61,11 @@ export function FontVariationToggle() {
   const getActiveLabel = () => {
     switch (fontVariation) {
       case "stencil-bold":
-        return "Big Shoulders Stencil (Bold)";
+        return "Big Shoulders Stencil (Bold, ALL CAPS)";
       case "stencil-regular":
-        return "Big Shoulders Stencil (Regular / Not Bold)";
+        return "Big Shoulders Stencil (Not Bold, ALL CAPS)";
+      case "bebas-medium":
+        return "Bebas Neue (Medium, ALL CAPS)";
       default:
         return "Default Font (Geist)";
     }
@@ -70,7 +89,7 @@ export function FontVariationToggle() {
               <Sparkles size={11} />
               Client Review Tool
             </span>
-            <span className="text-[#8C8A86] text-[12px]">· 3 Title Typography Variations</span>
+            <span className="text-[#8C8A86] text-[12px]">· Title Typography Variations</span>
           </div>
           <p className="text-white text-[13.5px] font-medium m-0">
             Active Title Font:{" "}
@@ -80,50 +99,65 @@ export function FontVariationToggle() {
           </p>
         </div>
 
-        {/* Right: 3 Variation Selector Buttons & Actions */}
+        {/* Right: Variation Selector Buttons & Actions */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
           {/* Option 1: Default */}
           <button
             type="button"
             onClick={() => applyFont("default")}
-            className={`flex items-center gap-2 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.06em] uppercase transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.05em] uppercase transition-all duration-200 cursor-pointer ${
               fontVariation === "default"
                 ? "bg-white text-[#0A0A0A] shadow-md ring-1 ring-white"
                 : "bg-[#1A1A1A] text-[#8C8A86] hover:text-white hover:bg-[#222222] border border-white/10"
             }`}
           >
-            {fontVariation === "default" && <Check size={14} className="text-[#0A0A0A]" />}
-            <span>A: Default (Geist)</span>
+            {fontVariation === "default" && <Check size={13} className="text-[#0A0A0A]" />}
+            <span>Default</span>
           </button>
 
-          {/* Option 2: Big Shoulders Stencil BOLD */}
+          {/* Option 2: Stencil BOLD */}
           <button
             type="button"
             onClick={() => applyFont("stencil-bold")}
-            className={`flex items-center gap-2 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.06em] uppercase transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.05em] uppercase transition-all duration-200 cursor-pointer ${
               fontVariation === "stencil-bold"
                 ? "bg-[#FE4C02] text-[#0A0A0A] shadow-lg shadow-[#FE4C02]/20 ring-1 ring-[#FE4C02]"
                 : "bg-[#1A1A1A] text-[#8C8A86] hover:text-white hover:bg-[#222222] border border-white/10"
             }`}
           >
-            {fontVariation === "stencil-bold" && <Check size={14} className="text-[#0A0A0A]" />}
-            <Type size={14} />
-            <span>B: Stencil (Bold)</span>
+            {fontVariation === "stencil-bold" && <Check size={13} className="text-[#0A0A0A]" />}
+            <Type size={13} />
+            <span>Stencil (Bold)</span>
           </button>
 
-          {/* Option 3: Big Shoulders Stencil REGULAR / NOT BOLD */}
+          {/* Option 3: Stencil NOT BOLD */}
           <button
             type="button"
             onClick={() => applyFont("stencil-regular")}
-            className={`flex items-center gap-2 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.06em] uppercase transition-all duration-200 cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.05em] uppercase transition-all duration-200 cursor-pointer ${
               fontVariation === "stencil-regular"
                 ? "bg-[#FE4C02] text-[#0A0A0A] shadow-lg shadow-[#FE4C02]/20 ring-1 ring-[#FE4C02]"
                 : "bg-[#1A1A1A] text-[#8C8A86] hover:text-white hover:bg-[#222222] border border-white/10"
             }`}
           >
-            {fontVariation === "stencil-regular" && <Check size={14} className="text-[#0A0A0A]" />}
-            <Type size={14} />
-            <span>C: Stencil (Not Bold)</span>
+            {fontVariation === "stencil-regular" && <Check size={13} className="text-[#0A0A0A]" />}
+            <Type size={13} />
+            <span>Stencil (Not Bold)</span>
+          </button>
+
+          {/* Option 4: Bebas MEDIUM */}
+          <button
+            type="button"
+            onClick={() => applyFont("bebas-medium")}
+            className={`flex items-center gap-1.5 px-3.5 py-2.5 text-[11.5px] font-semibold tracking-[0.05em] uppercase transition-all duration-200 cursor-pointer ${
+              fontVariation === "bebas-medium"
+                ? "bg-[#FE4C02] text-[#0A0A0A] shadow-lg shadow-[#FE4C02]/20 ring-1 ring-[#FE4C02]"
+                : "bg-[#1A1A1A] text-[#8C8A86] hover:text-white hover:bg-[#222222] border border-white/10"
+            }`}
+          >
+            {fontVariation === "bebas-medium" && <Check size={13} className="text-[#0A0A0A]" />}
+            <Type size={13} />
+            <span>Bebas Neue (Medium)</span>
           </button>
 
           {/* Scroll to top preview button */}
@@ -131,7 +165,7 @@ export function FontVariationToggle() {
             type="button"
             onClick={scrollToTop}
             title="Scroll to top to review Hero title"
-            className="flex items-center gap-1.5 px-3 py-2.5 bg-[#181818] hover:bg-white/10 text-[#8C8A86] hover:text-white text-[11.5px] border border-white/10 transition-colors cursor-pointer ml-auto sm:ml-0"
+            className="flex items-center gap-1.5 px-3 py-2.5 bg-[#181818] hover:bg-white/10 text-[#8C8A86] hover:text-white text-[11px] border border-white/10 transition-colors cursor-pointer ml-auto sm:ml-0"
           >
             <ArrowUp size={13} />
             <span className="hidden sm:inline">Preview Top</span>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100..900&family=Big+Shoulders+Stencil+Text:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Stencil+Display:wght@100..900&family=Big+Shoulders+Stencil+Text:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -10,6 +10,7 @@
   --font-geist: var(--font-geist), system-ui, -apple-system, sans-serif;
   --font-archivo: var(--font-archivo), system-ui, -apple-system, sans-serif;
   --font-stencil: 'Big Shoulders Stencil Display', 'Big Shoulders Stencil Text', 'Big Shoulders Stencil', sans-serif;
+  --font-bebas: 'Bebas Neue', sans-serif;
 }
 
 :root {
@@ -17,6 +18,7 @@
   --foreground: #FFFFFF;
   --brand-orange: #FE4C02;
   --font-stencil-family: 'Big Shoulders Stencil Display', 'Big Shoulders Stencil Text', 'Big Shoulders Stencil', sans-serif;
+  --font-bebas-family: 'Bebas Neue', Impact, sans-serif;
 }
 
 /* Review Variation 1: Big Shoulders Stencil BOLD (800) - ALL CAPS */
@@ -64,6 +66,36 @@ html.font-stencil-regular [data-title-font] {
 html.font-stencil-regular h1 {
   letter-spacing: 0.01em !important;
   line-height: 0.95 !important;
+}
+
+/* Review Variation 3: Bebas Neue MEDIUM - ALL CAPS */
+html.font-bebas-medium h1,
+html.font-bebas-medium h2,
+html.font-bebas-medium h3,
+html.font-bebas-medium h4,
+html.font-bebas-medium h5,
+html.font-bebas-medium h6,
+html.font-bebas-medium .title-font,
+html.font-bebas-medium [data-title-font],
+html.font-bebas h1,
+html.font-bebas h2,
+html.font-bebas h3,
+html.font-bebas h4,
+html.font-bebas h5,
+html.font-bebas h6,
+html.font-bebas .title-font,
+html.font-bebas [data-title-font] {
+  font-family: var(--font-bebas-family) !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  -webkit-text-stroke: 0.25px currentColor;
+}
+
+html.font-bebas-medium h1,
+html.font-bebas h1 {
+  letter-spacing: 0.015em !important;
+  line-height: 0.92 !important;
 }
 
 html {
