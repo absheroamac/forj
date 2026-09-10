@@ -262,7 +262,14 @@ export function MethodSection() {
                     transition={{ duration: 0.35, ease: "easeOut" }}
                   >
                     <h3 className="m-0 font-semibold text-[clamp(28px,3vw,44px)] leading-[1.08] tracking-[-0.035em] text-[#0A0A0A]">
-                      {activePillar.title}
+                      {activePillar.titleLine1 && activePillar.titleLine2 ? (
+                        <>
+                          <span className="block">{activePillar.titleLine1}</span>
+                          <span className="block">{activePillar.titleLine2}</span>
+                        </>
+                      ) : (
+                        activePillar.title
+                      )}
                     </h3>
                     <p className="m-0 mt-4 font-normal text-[15px] leading-[1.65] text-[#57544F] max-w-[360px]">
                       {activePillar.description}

@@ -12,6 +12,8 @@ export interface PillarItem {
   id: string;
   number: string;
   title: string;
+  titleLine1?: string;
+  titleLine2?: string;
   description: string;
   image: string;
   alt: string;
