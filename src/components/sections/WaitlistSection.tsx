@@ -32,11 +32,13 @@ export function WaitlistSection() {
         <div className="flex flex-col lg:flex-row justify-between gap-[clamp(36px,5vw,96px)] items-start">
           {/* Left Column */}
           <Reveal duration={0.7} className="flex-1 basis-[360px]">
-            <h2 className="m-0 font-bold text-[clamp(44px,5.8vw,78px)] leading-[1.02] tracking-[-0.035em] text-[#0A0A0A]">
-              Not ready yet<span className="text-[#FE4C02]">?</span>
+            <h2 className="m-0 font-bold text-[clamp(40px,5.2vw,72px)] leading-[1.02] tracking-[-0.035em] text-[#0A0A0A]">
+              Not ready to commit<span className="text-[#FE4C02]">?</span>
+              <br />
+              Stay close.
             </h2>
-            <p className="m-0 mt-5 font-normal text-[14.5px] md:text-[15px] leading-[1.65] text-[#0A0A0A] max-w-[400px]">
-              Join the waitlist. You&apos;ll be first to hear when doors open, and first in line for what comes after founding.
+            <p className="m-0 mt-5 font-normal text-[14.5px] md:text-[15px] leading-[1.65] text-[#0A0A0A] max-w-[420px]">
+              Join the waitlist — first to hear when doors open, first in line for whatever comes after founding. One message when it matters. No countdown spam.
             </p>
           </Reveal>
 
@@ -93,7 +95,7 @@ export function WaitlistSection() {
                         setContact(e.target.value);
                         if (error) setError("");
                       }}
-                      placeholder="you@email.com"
+                      placeholder="you@email.com or +971 50 ..."
                       className="w-full font-normal text-[clamp(22px,2.4vw,34px)] tracking-[-0.025em] text-[#0A0A0A] placeholder-[#8C8A86] bg-transparent border-0 border-b border-[#0A0A0A]/20 py-2.5 outline-none focus:border-[#FE4C02] transition-colors rounded-none"
                     />
                     {error && (
@@ -114,7 +116,7 @@ export function WaitlistSection() {
                       className="w-[15px] h-[15px] accent-[#FE4C02] flex-none cursor-pointer rounded-none border border-[#0A0A0A]/40"
                     />
                     <span>
-                      I agree to be contacted by FORJ Fitness about the opening. Opt out any time.
+                      I&apos;m happy for FORJ Fitness to contact me about the opening. Opt out any time.
                     </span>
                   </label>
 
@@ -123,7 +125,7 @@ export function WaitlistSection() {
                       type="submit"
                       className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[12.5px] tracking-[0.06em] uppercase px-8 py-3.5 min-h-[48px] hover:bg-[#0A0A0A] hover:text-white transition-all duration-200 cursor-pointer rounded-none inline-flex items-center justify-center shadow-none border-0"
                     >
-                      BECOME A FOUNDING MEMBER
+                      JOIN THE WAITLIST
                     </button>
                   </div>
                 </form>

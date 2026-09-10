@@ -30,14 +30,14 @@ const PARALLAX_SLIDES = [
   },
   {
     id: "conditioning",
-    image: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?fm=jpg&q=80&w=2000",
+    image: "/images/scroller-03.png",
     title: "Conditioning Arena",
-    subtitle: "Concept2 & Skillmills",
+    subtitle: "Freehand Conditioning",
     number: "03",
   },
   {
     id: "small-group",
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?fm=jpg&q=80&w=2000",
+    image: "/images/scroller-04.png",
     title: "Eight-Seat Cohort",
     subtitle: "Coached Progression",
     number: "04",
@@ -200,11 +200,9 @@ export function MethodSection() {
             </h2>
           </Reveal>
 
-          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[420px] lg:ml-auto">
+          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[460px] lg:ml-auto">
             <p className="m-0 font-normal text-[clamp(14px,1.1vw,16px)] leading-[1.65] text-[#57544F]">
-              FORJ runs in eight-week cycles. Every week builds on the last —
-              same movements, more load, cleaner technique — so you can
-              actually see the change by the end of it.
+              Before machines decided your workout, training was simple: pick the weight up, move it well, do it better than last week. FORJ runs that way on purpose. Eight-week cycles where every week builds on the last — same movements, more load, cleaner technique. By week eight you don&apos;t just feel different. You measure different.
             </p>
           </Reveal>
         </div>

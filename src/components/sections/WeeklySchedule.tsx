@@ -18,11 +18,9 @@ export function WeeklySchedule() {
             </h2>
           </Reveal>
 
-          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[420px] lg:ml-auto">
+          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[440px] lg:ml-auto">
             <p className="m-0 font-normal text-[clamp(13.5px,1vw,15px)] leading-[1.65] text-[#8C8A86]">
-              Monday to Friday you train — structured, progressive, capped at
-              eight. Saturday and Sunday you sweat together — bigger partner and
-              team sessions. Bring a friend.
+              Monday to Friday you build — structured, progressive, capped at eight. The weekend belongs to the crew: bigger sessions, partner formats, and the door open for a friend.
             </p>
           </Reveal>
         </div>
@@ -61,7 +59,7 @@ export function WeeklySchedule() {
                       </div>
 
                       {/* Workout Name in Orange */}
-                      <span className="font-bold text-[20px] sm:text-[23px] tracking-tight text-[#FE4C02] uppercase leading-none">
+                      <span className="font-bold text-[20px] sm:text-[23px] tracking-tight text-[#FE4C02] uppercase leading-none title-font">
                         {card.name}
                       </span>
                     </div>

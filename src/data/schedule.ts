@@ -14,15 +14,15 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
     day: "MONDAY",
     name: "STRONG",
     subtitle: "Full-body strength",
-    description: "Heavy compound lifts and progressive barbell overload.",
+    description: "Heavy compound lifts off the bar. The week's foundation, laid first.",
   },
   {
     id: "tue",
     number: "02",
     day: "TUESDAY",
     name: "ENGINE",
-    subtitle: "Aerobic capacity",
-    description: "Sustained conditioning on ergs and skillmills.",
+    subtitle: "Conditioning",
+    description: "Runs, carries, intervals and bodyweight circuits that build an engine. No machines required — you are the machine.",
   },
   {
     id: "wed",
@@ -30,7 +30,7 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
     day: "WEDNESDAY",
     name: "LEGS",
     subtitle: "Lower body",
-    description: "Squats, hinges, and unilateral strength building.",
+    description: "Squats, hinges and single-leg strength. The original measures of strong.",
   },
   {
     id: "thu",
@@ -38,7 +38,7 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
     day: "THURSDAY",
     name: "HYBRID",
     subtitle: "Strength + conditioning",
-    description: "High-output combinations testing work capacity.",
+    description: "Lifts paired with timed efforts. The day that tests what the week built.",
   },
   {
     id: "fri",
@@ -46,15 +46,15 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
     day: "FRIDAY",
     name: "UPPER",
     subtitle: "Upper body",
-    description: "Presses, pulls, and core stability under load.",
+    description: "Press, pull, hold — upper-body strength with the core working underneath all of it.",
   },
   {
     id: "sat-sun",
     number: "06",
     day: "SATURDAY & SUNDAY",
     name: "SWEAT",
-    subtitle: "Weekend partner sweat",
-    description: "High-energy team conditioning sessions with a community focus.",
+    subtitle: "Weekend crew sessions",
+    description: "Bigger, louder, together. Partner and team formats — and the one session you can bring a friend to.",
   },
 ];
 

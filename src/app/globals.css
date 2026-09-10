@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100..900&family=Big+Shoulders+Stencil+Text:wght@100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -8,12 +9,61 @@
   --color-brand-offwhite: #EDEBE7;
   --font-geist: var(--font-geist), system-ui, -apple-system, sans-serif;
   --font-archivo: var(--font-archivo), system-ui, -apple-system, sans-serif;
+  --font-stencil: 'Big Shoulders Stencil Display', 'Big Shoulders Stencil Text', 'Big Shoulders Stencil', sans-serif;
 }
 
 :root {
   --background: #0A0A0A;
   --foreground: #FFFFFF;
   --brand-orange: #FE4C02;
+  --font-stencil-family: 'Big Shoulders Stencil Display', 'Big Shoulders Stencil Text', 'Big Shoulders Stencil', sans-serif;
+}
+
+/* Review Variation 1: Big Shoulders Stencil BOLD (800) - ALL CAPS */
+html.font-stencil-titles h1,
+html.font-stencil-titles h2,
+html.font-stencil-titles h3,
+html.font-stencil-titles h4,
+html.font-stencil-titles h5,
+html.font-stencil-titles h6,
+html.font-stencil-titles .title-font,
+html.font-stencil-titles [data-title-font],
+html.font-stencil-bold h1,
+html.font-stencil-bold h2,
+html.font-stencil-bold h3,
+html.font-stencil-bold h4,
+html.font-stencil-bold h5,
+html.font-stencil-bold h6,
+html.font-stencil-bold .title-font,
+html.font-stencil-bold [data-title-font] {
+  font-family: var(--font-stencil-family) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+html.font-stencil-titles h1,
+html.font-stencil-bold h1 {
+  letter-spacing: -0.015em !important;
+  line-height: 0.92 !important;
+}
+
+/* Review Variation 2: Big Shoulders Stencil REGULAR / NOT BOLD (400-500) - ALL CAPS */
+html.font-stencil-regular h1,
+html.font-stencil-regular h2,
+html.font-stencil-regular h3,
+html.font-stencil-regular h4,
+html.font-stencil-regular h5,
+html.font-stencil-regular h6,
+html.font-stencil-regular .title-font,
+html.font-stencil-regular [data-title-font] {
+  font-family: var(--font-stencil-family) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+}
+
+html.font-stencil-regular h1 {
+  letter-spacing: 0.01em !important;
+  line-height: 0.95 !important;
 }
 
 html {

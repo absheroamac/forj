@@ -51,7 +51,7 @@ export function FoundingRateBar({
                   AED {price}
                 </span>
                 <span className="text-[12.5px] text-[#8C8A86]">
-                  / month · Locked for life
+                  / month · Yours for as long as you stay
                 </span>
               </div>
             </div>
@@ -81,7 +81,7 @@ export function FoundingRateBar({
                   OCTOBER 2026
                 </span>
                 <span className="text-[14px] lg:text-[15px] font-semibold text-white group-hover:text-[#0A0A0A] tracking-[0.02em] uppercase transition-colors">
-                  Become a founding member
+                  Claim a founder number
                 </span>
               </div>
               <div className="w-9 h-9 rounded-none border border-white/20 group-hover:border-[#0A0A0A] group-hover:bg-[#0A0A0A] flex items-center justify-center transition-colors">

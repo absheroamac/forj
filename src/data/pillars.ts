@@ -2,32 +2,30 @@ import { PillarItem } from "@/types";
 
 export const METHOD_PILLARS: PillarItem[] = [
   {
-    id: "reason",
+    id: "basics",
     number: "01",
-    title: "A Reason to Show up",
+    title: "The basics, kept sacred",
     description:
-      "Structured programming every week, not a random workout. You always know why you're here.",
-    image: "/images/pillar-01-rack.jpg",
+      "Squat, hinge, press, pull, carry. The movements that built every strong body in history — long before fitness became an industry. Nothing in this room needs a plug socket.",
+    image: "/images/feature-01.png",
     alt: "Squat Racks & Barbells at FORJ",
   },
   {
-    id: "capped",
+    id: "plan",
     number: "02",
-    title: "Capped at Eight",
+    title: "A plan, not a playlist",
     description:
-      "Weekday classes hold eight people. Coaching only works when the coach can watch you move.",
-    image:
-      "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?fm=jpg&q=80&auto=format&fit=crop&w=1200",
-    alt: "Small group coaching at FORJ",
+      "Structured programming, every week, written before you walk in. You always know why you're here — and what next week will ask of you.",
+    image: "/images/feature-02.png",
+    alt: "Structured progressive programming at FORJ",
   },
   {
-    id: "measurable",
+    id: "coach",
     number: "03",
-    title: "Measurable",
+    title: "A coach who sees you",
     description:
-      "Progression you can see across the cycle — accountable, coached, and yours to keep.",
-    image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?fm=jpg&q=80&auto=format&fit=crop&w=1200",
-    alt: "Measurable progress and barbell loading",
+      "Eight people means every rep gets watched. Form fixed in the moment, load set to you, progress tracked by name — not by machine memory.",
+    image: "/images/feature-03.png",
+    alt: "Coached small group training at FORJ",
   },
 ];

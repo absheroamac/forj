@@ -28,9 +28,9 @@ export function FoundingOffer({
             </h2>
           </Reveal>
 
-          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[420px] lg:ml-auto">
+          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[440px] lg:ml-auto">
             <p className="m-0 font-normal text-[clamp(13.5px,1vw,15px)] leading-[1.65] text-[#8C8A86]">
-              A founding seat is a bet on the room before the doors open — and the only time this rate exists. You lock it now; it stays yours. First month collected today; everything after runs monthly.
+              A founder number is a bet on the room before the doors open — and the only time this rate will ever exist. Twenty numbers. When they&apos;re gone, they&apos;re gone for good.
             </p>
           </Reveal>
         </div>
@@ -49,7 +49,7 @@ export function FoundingOffer({
             />
           </div>
 
-          {/* Right Column: Pricing, Perks List, and CTA Button */}
+          {/* Right Column: Pricing, Perks List, Terms & CTA Button */}
           <div className="lg:col-span-6 flex flex-col justify-center lg:pl-4">
             {/* Price Row: AED 999 /month */}
             <Reveal duration={0.7} delay={0.1}>
@@ -83,16 +83,23 @@ export function FoundingOffer({
               ))}
             </div>
 
+            {/* Terms line */}
+            <div className="mt-5">
+              <p className="m-0 text-[12px] sm:text-[12.5px] leading-[1.6] text-[#8C8A86]">
+                First month collected at signup; monthly after. Founding runs on a 12-month commitment — the rate stays yours while your membership stays active.
+              </p>
+            </div>
+
             {/* CTA Button */}
             <Reveal duration={0.7} delay={0.3}>
-              <div className="mt-8 pt-2">
+              <div className="mt-6 pt-2">
                 <Button
                   href="#waitlist"
                   variant="primary"
                   size="lg"
-                  className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A]"
+                  className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[13px] tracking-[0.08em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A]"
                 >
-                  BECOME A FOUNDING MEMBER
+                  CLAIM A FOUNDER NUMBER
                 </Button>
               </div>
             </Reveal>

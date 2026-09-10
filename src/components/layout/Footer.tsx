@@ -1,5 +1,6 @@
 import React from "react";
 import { SectionContainer } from "@/components/ui/SectionContainer";
+import { FontVariationToggle } from "@/components/ui/FontVariationToggle";
 
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
             <p className="text-[#8C8A86] text-[13.5px] leading-[1.7] m-0">
               A dojo, not a gym.
               <br />
-              Meydan, Dubai
+              Strength from the roots — Meydan, Dubai. Opening October 2026.
             </p>
           </div>
 
@@ -73,8 +74,13 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Client Review Font Switcher Toolbar */}
+        <div className="mt-[clamp(32px,4vw,56px)]">
+          <FontVariationToggle />
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-[clamp(28px,3.4vw,52px)] py-[clamp(18px,2vw,26px)] border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] tracking-[0.1em] text-[#8C8A86]">
+        <div className="mt-[clamp(24px,3vw,40px)] py-[clamp(18px,2vw,26px)] border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] tracking-[0.1em] text-[#8C8A86]">
           <span>© 2026 FORJ Fitness · 25 Degrees North</span>
           <span>Opening October 2026 · Meydan, Dubai</span>
         </div>

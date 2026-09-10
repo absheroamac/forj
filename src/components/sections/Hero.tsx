@@ -75,17 +75,14 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
           {/* Right Column Copy & Actions */}
           <div className="flex flex-col justify-end lg:pl-6 pb-2">
             <Reveal duration={0.7} delay={0.25}>
-              <p className="m-0 font-normal text-[clamp(17px,1.5vw,23px)] leading-[1.42] tracking-[-0.015em] text-white max-w-[480px]">
-                Small-group coached strength in Meydan. Eight people to a class,
-                an eight-week cycle, and a coach who knows your name.
+              <p className="m-0 font-normal text-[clamp(16px,1.4vw,22px)] leading-[1.45] tracking-[-0.015em] text-white max-w-[500px]">
+                Strength the way it was always built — a bar, the floor, your own bodyweight, and a coach watching every rep. Eight people to a class in Meydan. No machines. No shortcuts. The original work, programmed properly.
               </p>
             </Reveal>
 
             <Reveal duration={0.7} delay={0.35}>
-              <p className="m-0 mt-4 lg:mt-5 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[420px]">
-                Trained for years or it&apos;s day one you train the same way
-                here. With a plan, with weekly progression, and with people who
-                show up beside you
+              <p className="m-0 mt-4 lg:mt-5 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[440px]">
+                Day one or year ten, you train the same way here: with a plan, with weekly progression, and with seven people who show up beside you.
               </p>
             </Reveal>
 
@@ -111,15 +108,14 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
         <div className="w-full max-w-[1600px] mx-auto px-[clamp(16px,2.5vw,48px)]">
           <Reveal duration={0.6}>
             <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-y-4 gap-x-2 sm:gap-x-4">
-              {/* Item 1: 20 Seats */}
+              {/* Item 1: 20 founder numbers */}
               <div className="flex items-center gap-3 sm:gap-4 py-2 pr-4 lg:pr-8">
                 <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
                   {seats}
                 </span>
                 <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span>seats in the</span>
-                  <span className="text-white font-medium">founding tier —</span>
-                  <span>first month free</span>
+                  <span className="text-white font-medium">founder numbers.</span>
+                  <span>Once. Never repeated.</span>
                 </div>
               </div>
 
@@ -133,32 +129,31 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
                 </span>
                 <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
                   <span className="text-white font-medium">AED / month,</span>
-                  <span>locked for life</span>
+                  <span>yours for as long as you stay</span>
                 </div>
               </div>
 
               {/* Hairline Divider */}
               <div className="h-8 lg:h-10 border-r border-white/15 hidden md:block flex-none" />
 
-              {/* Item 3: 8 Week Cycles */}
+              {/* Item 3: 8 */}
               <div className="flex items-center gap-3 sm:gap-4 py-2 px-2 sm:px-4 lg:px-8">
                 <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
                   8
                 </span>
                 <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span className="text-white font-medium">week cycles,</span>
-                  <span>capped at 8 per</span>
-                  <span>class</span>
+                  <span className="text-white font-medium">to a class,</span>
+                  <span>8-week cycles</span>
                 </div>
               </div>
 
-              {/* Item 4: Become a founding member Box Button */}
+              {/* Item 4: Claim a founder number Box Button */}
               <Link
                 href="#offer"
                 className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-white/20 hover:border-[#FE4C02] hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] transition-all duration-200 cursor-pointer lg:ml-auto rounded-none"
               >
-                <span className="font-bold text-[15px] sm:text-[16px] lg:text-[17px] tracking-[0.02em] not-italic leading-none">
-                  Become a founding member
+                <span className="font-bold text-[14px] sm:text-[15px] lg:text-[16px] tracking-[0.04em] uppercase not-italic leading-none">
+                  Claim a founder number
                 </span>
               </Link>
             </div>

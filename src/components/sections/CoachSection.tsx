@@ -33,11 +33,8 @@ export function CoachSection() {
               <span className="text-[#FE4C02]">.</span>
             </h2>
 
-            <p className="m-0 font-normal text-[clamp(16px,1.3vw,20px)] leading-[1.55] tracking-[-0.012em] text-[#3A3835] max-w-[42ch]">
-              Chris Jones has spent fifteen years coaching — beginners on day
-              one and athletes chasing a number. FORJ is the room he set out to
-              build: small enough to see everyone, serious enough to get
-              somewhere.
+            <p className="m-0 font-normal text-[clamp(15.5px,1.25vw,19px)] leading-[1.55] tracking-[-0.012em] text-[#3A3835] max-w-[44ch]">
+              Fifteen years on gym floors taught Chris one thing: the people who change are the ones someone actually coaches. FORJ is the room he set out to build — small enough to see every rep, serious enough to get somewhere. Beginners on day one and athletes chasing a number train the same hour here, because the method doesn&apos;t change. The load does.
             </p>
           </div>
         </Reveal>

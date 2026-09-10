@@ -19,7 +19,7 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "FORJ Fitness | A dojo, not a gym. Meydan, Dubai",
   description:
-    "Small-group coached strength in Meydan. Eight people to a class, an eight-week cycle, and a coach who knows your name. Founding memberships now open.",
+    "Small-group coached strength in Meydan, Dubai. Eight to a class, eight-week cycles, no machines — the original work, programmed properly. Founding memberships: 20 numbers, once.",
   keywords: [
     "FORJ",
     "FORJ Fitness",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FORJ Fitness | A dojo, not a gym. Meydan, Dubai",
     description:
-      "Small-group coached strength in Meydan. Eight people to a class, an eight-week cycle, and a coach who knows your name.",
+      "Small-group coached strength in Meydan, Dubai. Eight to a class, eight-week cycles, no machines — the original work, programmed properly. Founding memberships: 20 numbers, once.",
     type: "website",
     locale: "en_US",
   },
@@ -51,6 +51,14 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${archivo.variable} scroll-smooth bg-[#0A0A0A]`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100..900&family=Big+Shoulders+Stencil+Text:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-screen bg-[#0A0A0A] text-white antialiased flex flex-col font-sans">
         {children}
       </body>
