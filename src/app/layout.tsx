@@ -19,7 +19,7 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "FORJ Fitness | A dojo, not a gym. Meydan, Dubai",
   description:
-    "Small-group coached strength in Meydan, Dubai. Eight to a class, eight-week cycles, no machines — the original work, programmed properly. Founding memberships: 20 numbers, once.",
+    "Small-group coached strength in Meydan, Dubai. Eight to a class, eight-week cycles, no gimmicks — the original work, programmed properly. Founding memberships: 20 numbers, once.",
   keywords: [
     "FORJ",
     "FORJ Fitness",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FORJ Fitness | A dojo, not a gym. Meydan, Dubai",
     description:
-      "Small-group coached strength in Meydan, Dubai. Eight to a class, eight-week cycles, no machines — the original work, programmed properly. Founding memberships: 20 numbers, once.",
+      "Small-group coached strength in Meydan, Dubai. Eight to a class, eight-week cycles, no gimmicks — the original work, programmed properly. Founding memberships: 20 numbers, once.",
     type: "website",
     locale: "en_US",
   },

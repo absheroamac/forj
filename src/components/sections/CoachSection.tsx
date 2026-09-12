@@ -13,7 +13,7 @@ export function CoachSection() {
       {/* Coach Visual */}
       <div className="relative min-h-[clamp(380px,46vw,720px)] w-full overflow-hidden bg-[#111]">
         <Image
-          src="/images/trainer.png"
+          src="/images/trainer.webp"
           alt="Chris Jones — Founding Coach"
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"

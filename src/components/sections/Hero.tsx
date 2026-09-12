@@ -24,7 +24,7 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
         {/* Left Column Full-Height Image */}
         <div className="relative w-full h-full overflow-hidden">
           <Image
-            src="/hero-img.png"
+            src="/hero-img.webp"
             alt="FORJ Athlete Training"
             fill
             priority
@@ -76,7 +76,7 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
           <div className="flex flex-col justify-end lg:pl-6 pb-2">
             <Reveal duration={0.7} delay={0.25}>
               <p className="m-0 font-normal text-[clamp(16px,1.4vw,22px)] leading-[1.45] tracking-[-0.015em] text-white max-w-[500px]">
-                Strength the way it was always built — a bar, the floor, your own bodyweight, and a coach watching every rep. Eight people to a class in Meydan. No machines. No shortcuts. The original work, programmed properly.
+                Strength the way it was always built — a bar, the floor, your own bodyweight, and a coach watching every rep. Eight people to a class in Meydan. No gimmicks. No shortcuts. The original work, programmed properly.
               </p>
             </Reveal>
 

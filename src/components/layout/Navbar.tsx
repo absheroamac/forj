@@ -36,7 +36,7 @@ export function Navbar() {
           >
             <div className="relative h-[44px] md:h-[52px] w-[120px] md:w-[145px] transition-transform duration-200 group-hover:scale-105">
               <Image
-                src="/forj-logo.png"
+                src="/forj-logo.webp"
                 alt="FORJ Fitness"
                 fill
                 priority

@@ -8,8 +8,8 @@ export const METHOD_PILLARS: PillarItem[] = [
     titleLine1: "The basics,",
     titleLine2: "kept sacred",
     description:
-      "Squat, hinge, press, pull, carry. The movements that built every strong body in history — long before fitness became an industry. Nothing in this room needs a plug socket.",
-    image: "/images/feature-01.png",
+      "Squat, hinge, press, pull, carry. The movements that built every strong body in history — long before fitness became an industry. Built on free weights, hard conditioning, and honest effort.",
+    image: "/images/feature-01.webp",
     alt: "Squat Racks & Barbells at FORJ",
   },
   {
@@ -20,7 +20,7 @@ export const METHOD_PILLARS: PillarItem[] = [
     titleLine2: "not a playlist",
     description:
       "Structured programming, every week, written before you walk in. You always know why you're here — and what next week will ask of you.",
-    image: "/images/feature-02.png",
+    image: "/images/feature-02.webp",
     alt: "Structured progressive programming at FORJ",
   },
   {
@@ -30,8 +30,8 @@ export const METHOD_PILLARS: PillarItem[] = [
     titleLine1: "A coach",
     titleLine2: "who sees you",
     description:
-      "Eight people means every rep gets watched. Form fixed in the moment, load set to you, progress tracked by name — not by machine memory.",
-    image: "/images/feature-03.png",
+      "Eight people means every rep gets watched. Form fixed in the moment, load set to you, progress tracked by name — not an app or an algorithm.",
+    image: "/images/feature-03.webp",
     alt: "Coached small group training at FORJ",
   },
 ];

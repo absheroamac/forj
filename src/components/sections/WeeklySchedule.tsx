@@ -51,7 +51,7 @@ export function WeeklySchedule() {
                       {/* FORJ Logo Wordmark */}
                       <div className="relative h-[16px] sm:h-[18px] w-[33px] sm:w-[37px] flex-none">
                         <Image
-                          src="/forj-wordmark.png"
+                          src="/forj-wordmark.webp"
                           alt="FORJ"
                           fill
                           className="object-contain object-left mix-blend-lighten"

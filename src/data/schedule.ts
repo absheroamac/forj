@@ -22,7 +22,7 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
     day: "TUESDAY",
     name: "ENGINE",
     subtitle: "Conditioning",
-    description: "Runs, carries, intervals and bodyweight circuits that build an engine. No machines required — you are the machine.",
+    description: "Runs, carries, interval efforts, and conditioning circuits that build a relentless engine. Pure work, programmed properly.",
   },
   {
     id: "wed",

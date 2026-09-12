@@ -40,7 +40,7 @@ export function FoundingOffer({
           {/* Left Column: Gym Image */}
           <div className="lg:col-span-6 relative aspect-[4/4.2] sm:aspect-[4/4] lg:aspect-[4/4.3] w-full overflow-hidden rounded-none bg-[#111]">
             <Image
-              src="/images/founding-gym.png"
+              src="/images/founding-gym.webp"
               alt="FORJ Founding Gym Room"
               fill
               priority
