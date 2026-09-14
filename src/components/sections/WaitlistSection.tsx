@@ -33,12 +33,11 @@ export function WaitlistSection() {
           {/* Left Column */}
           <Reveal duration={0.7} className="flex-1 basis-[360px]">
             <h2 className="m-0 font-bold text-[clamp(40px,5.2vw,72px)] leading-[1.02] tracking-[-0.035em] text-[#0A0A0A]">
-              Not ready to commit<span className="text-[#FE4C02]">?</span>
-              <br />
-              Stay close.
+              Not ready to commit
+              <span className="text-[#FE4C02]">?</span>
             </h2>
             <p className="m-0 mt-5 font-normal text-[14.5px] md:text-[15px] leading-[1.65] text-[#0A0A0A] max-w-[420px]">
-              Join the waitlist — first to hear when doors open, first in line for whatever comes after founding. One message when it matters. No countdown spam.
+              Get on the general waitlist for opening updates — separate from the founding list, no commitment either way.
             </p>
           </Reveal>
 
@@ -125,7 +124,7 @@ export function WaitlistSection() {
                       type="submit"
                       className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[12.5px] tracking-[0.06em] uppercase px-8 py-3.5 min-h-[48px] hover:bg-[#0A0A0A] hover:text-white transition-all duration-200 cursor-pointer rounded-none inline-flex items-center justify-center shadow-none border-0"
                     >
-                      JOIN THE WAITLIST
+                      GET UPDATES
                     </button>
                   </div>
                 </form>

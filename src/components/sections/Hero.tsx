@@ -48,55 +48,58 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
       </div>
 
       {/* Foreground Content Container */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(24px,3.5vh,48px)] pb-[clamp(24px,3.5vh,44px)] flex flex-col justify-between flex-1">
-        {/* Centered Massive Title Text */}
-        <Reveal duration={0.8} delay={0.1} className="w-full flex justify-center text-center">
-          <h1 className="m-0 font-semibold text-[clamp(48px,9.4vw,164px)] leading-[0.88] tracking-[-0.048em] text-white text-center mx-auto whitespace-normal md:whitespace-nowrap">
-            A dojo, not a gym
-            <motion.span
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{
-                duration: 1.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="text-[#FE4C02] inline-block"
-            >
-              .
-            </motion.span>
-          </h1>
-        </Reveal>
-
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(24px,3.5vh,48px)] pb-[clamp(24px,3.5vh,44px)] flex flex-col justify-center flex-1">
         {/* 2-Column Body Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-end mt-auto pt-6 pb-2">
-          {/* Left Column Spacer (Allows athlete visual to show through) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-center my-auto py-4">
+          {/* Left Column Spacer (Allows athlete visual to show through unobstructed) */}
           <div className="hidden lg:block pointer-events-none" />
 
-          {/* Right Column Copy & Actions */}
-          <div className="flex flex-col justify-end lg:pl-6 pb-2">
-            <Reveal duration={0.7} delay={0.25}>
-              <p className="m-0 font-normal text-[clamp(16px,1.4vw,22px)] leading-[1.45] tracking-[-0.015em] text-white max-w-[500px]">
-                Strength the way it was always built — a bar, the floor, your own bodyweight, and a coach watching every rep. Eight people to a class in Meydan. No gimmicks. No shortcuts. The original work, programmed properly.
+          {/* Right Column: Eyebrow + Left-Aligned Title + Copy & Actions */}
+          <div className="flex flex-col justify-center items-start text-left lg:pl-6 py-2">
+            <Reveal duration={0.7} delay={0.1}>
+              <div className="font-mono text-[11px] sm:text-[12px] tracking-[0.14em] text-white/50 uppercase mb-3">
+                MEYDAN, DUBAI · OPENING OCTOBER 2026
+              </div>
+            </Reveal>
+
+            <Reveal duration={0.8} delay={0.2}>
+              <h1 className="m-0 font-semibold text-[clamp(38px,4.8vw,78px)] leading-[0.98] tracking-[-0.04em] text-white text-left whitespace-normal">
+                A studio with a dojo philosophy.
+                <span className="block text-white/90 mt-1">
+                  Not a gym<span className="text-[#FE4C02]">.</span>
+                </span>
+              </h1>
+            </Reveal>
+
+            <Reveal duration={0.7} delay={0.3}>
+              <p className="m-0 mt-6 font-normal text-[clamp(16px,1.25vw,20px)] leading-[1.5] tracking-[-0.015em] text-white max-w-[520px]">
+                Small-group coached strength. Eight people to a class. A coach who knows your name.
               </p>
             </Reveal>
 
-            <Reveal duration={0.7} delay={0.35}>
-              <p className="m-0 mt-4 lg:mt-5 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[440px]">
-                Day one or year ten, you train the same way here: with a plan, with weekly progression, and with seven people who show up beside you.
+            <Reveal duration={0.7} delay={0.38}>
+              <p className="m-0 mt-3 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[460px]">
+                A limited founding cohort, before the doors open.
               </p>
             </Reveal>
 
             {/* Action Buttons Row */}
-            <Reveal duration={0.7} delay={0.45}>
-              <div className="flex items-center gap-4 flex-wrap mt-[clamp(20px,2.8vh,36px)]">
+            <Reveal duration={0.7} delay={0.46}>
+              <div className="flex items-center gap-4 flex-wrap mt-[clamp(24px,3vh,36px)]">
                 <Button
-                  href="#waitlist"
+                  href="#offer"
                   variant="outline"
                   size="lg"
                   className="bg-[#0A0A0A] text-white border border-[#FE4C02] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
                 >
-                  JOIN THE WAITLIST
+                  JOIN THE FOUNDING LIST
                 </Button>
+                <a
+                  href="#waitlist"
+                  className="text-[13px] md:text-[14px] text-[#8C8A86] hover:text-white underline underline-offset-4 transition-colors"
+                >
+                  or just get updates
+                </a>
               </div>
             </Reveal>
           </div>
@@ -122,21 +125,7 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
               {/* Hairline Divider */}
               <div className="h-8 lg:h-10 border-r border-white/15 hidden sm:block flex-none" />
 
-              {/* Item 2: 999 AED */}
-              <div className="flex items-center gap-3 sm:gap-4 py-2 px-2 sm:px-4 lg:px-8">
-                <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
-                  {price}
-                </span>
-                <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span className="text-white font-medium">AED / month,</span>
-                  <span>yours for as long as you stay</span>
-                </div>
-              </div>
-
-              {/* Hairline Divider */}
-              <div className="h-8 lg:h-10 border-r border-white/15 hidden md:block flex-none" />
-
-              {/* Item 3: 8 */}
+              {/* Item 2: 8 to a class */}
               <div className="flex items-center gap-3 sm:gap-4 py-2 px-2 sm:px-4 lg:px-8">
                 <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
                   8
@@ -147,7 +136,7 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
                 </div>
               </div>
 
-              {/* Item 4: Claim founding membership Box Button */}
+              {/* Item 3: Claim founding membership Box Button */}
               <Link
                 href="#offer"
                 className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-white/20 hover:border-[#FE4C02] hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] transition-all duration-200 cursor-pointer lg:ml-auto rounded-none"

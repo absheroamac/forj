@@ -13,9 +13,9 @@ export function Footer() {
               FORJ Fitness
             </div>
             <p className="text-[#8C8A86] text-[13.5px] leading-[1.7] m-0">
-              A dojo, not a gym.
+              A studio with a dojo philosophy.
               <br />
-              Strength from the roots — Meydan, Dubai. Opening October 2026.
+              Meydan, Dubai · Opening October 2026
             </p>
           </div>
 
@@ -25,9 +25,9 @@ export function Footer() {
               Visit
             </div>
             <p className="text-[#B4B2AE] text-[13.5px] leading-[1.7] m-0">
-              Nad Al Sheba / Meydan
+              Azizi Riviera 9, Retail 01
               <br />
-              <span className="text-[#8C8A86]">Street address pending</span>
+              <span className="text-[#8C8A86]">Al Merkadh, Meydan, Dubai, UAE</span>
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export function Footer() {
             </div>
             <p className="text-[#B4B2AE] text-[13.5px] leading-[1.7] m-0 flex flex-col gap-1">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/forjdxb?utm_source=forj-website&utm_medium=referral&utm_campaign=founding_presale"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
@@ -46,7 +46,7 @@ export function Footer() {
                 @forjdxb ↗
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/chris.jonesfitness?utm_source=forj-website&utm_medium=referral&utm_campaign=founding_presale"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
@@ -61,15 +61,19 @@ export function Footer() {
             <div className="text-[#FE4C02] text-[12.5px] font-medium tracking-[0.01em] mb-3.5">
               Contact
             </div>
-            <p className="text-[#B4B2AE] text-[13.5px] leading-[1.7] m-0">
+            <p className="text-[#B4B2AE] text-[13.5px] leading-[1.7] m-0 flex flex-col gap-1">
               <a
-                href="mailto:hello@forjdxb.com"
+                href="mailto:forjfitnessdxb@gmail.com"
                 className="hover:text-white transition-colors"
               >
-                hello@forjdxb.com
+                forjfitnessdxb@gmail.com
               </a>
-              <br />
-              <span className="text-[#8C8A86]">Phone TBC</span>
+              <a
+                href="tel:+971503741223"
+                className="hover:text-white transition-colors"
+              >
+                +971 50 374 1223
+              </a>
             </p>
           </div>
         </div>

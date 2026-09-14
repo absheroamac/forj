@@ -47,6 +47,7 @@ const PARALLAX_SLIDES = [
 export function MethodSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mobileSlideIndex, setMobileSlideIndex] = useState(0);
+  const [desktopSlideIndex, setDesktopSlideIndex] = useState(0);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -73,6 +74,13 @@ export function MethodSection() {
             scrub: 0.8,
             anticipatePin: 1,
             fastScrollEnd: true,
+            onUpdate: (self) => {
+              const currentSlide = Math.min(
+                Math.round(self.progress * (totalPanels - 1)),
+                totalPanels - 1
+              );
+              setDesktopSlideIndex(currentSlide);
+            },
             snap: {
               snapTo: 1 / (totalPanels - 1),
               duration: { min: 0.2, max: 0.5 },
@@ -203,9 +211,25 @@ export function MethodSection() {
             </div>
           </div>
         </div>
+
+        {/* Curved Pill Carousel Indicator at Bottom (Desktop) */}
+        <div className="absolute bottom-8 inset-x-0 flex items-center justify-center z-30 pointer-events-none select-none">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 pointer-events-auto shadow-lg">
+            {PARALLAX_SLIDES.map((_, idx) => (
+              <div
+                key={idx}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  desktopSlideIndex === idx
+                    ? "w-8 bg-[#FE4C02]"
+                    : "w-2.5 bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* MOBILE VIEW: Hardware-Accelerated Native Touch Swipe Carousel (Zero Vertical Hijacking) */}
+      {/* MOBILE VIEW: Hardware-Accelerated Native Touch Swipe Carousel */}
       <div className="lg:hidden relative w-full bg-[#0A0A0A] overflow-hidden">
         <div
           ref={mobileScrollRef}
@@ -252,19 +276,23 @@ export function MethodSection() {
           </div>
         </div>
 
-        {/* Mobile Dot Indicators */}
-        <div className="absolute bottom-4 inset-x-0 flex items-center justify-center gap-1.5 z-20 pointer-events-none">
-          {PARALLAX_SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => scrollToMobileSlide(idx)}
-              className={`h-1.5 rounded-full transition-all duration-300 pointer-events-auto cursor-pointer ${
-                mobileSlideIndex === idx ? "w-6 bg-[#FE4C02]" : "w-1.5 bg-white/40"
-              }`}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
+        {/* Curved Pill Carousel Indicator at Bottom (Mobile) */}
+        <div className="absolute bottom-5 inset-x-0 flex items-center justify-center z-20 pointer-events-none select-none">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 pointer-events-auto shadow-lg">
+            {PARALLAX_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => scrollToMobileSlide(idx)}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  mobileSlideIndex === idx
+                    ? "w-7 bg-[#FE4C02]"
+                    : "w-2 bg-white/40"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -272,17 +300,17 @@ export function MethodSection() {
       <div className="w-full max-w-[1440px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(64px,8vw,120px)] pb-[clamp(48px,6vw,96px)]">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-[clamp(48px,6vw,88px)]">
           <Reveal duration={0.7} className="w-full lg:w-auto flex-none">
-            <h2 className="m-0 font-semibold text-[clamp(32px,4.6vw,72px)] leading-[1.02] tracking-[-0.04em] text-[#0A0A0A]">
-              <span className="block whitespace-nowrap">Train like it means</span>
-              <span className="block whitespace-nowrap">
-                something<span className="text-[#FE4C02]">.</span>
-              </span>
+            <h2 className="m-0 font-semibold text-[clamp(32px,4.6vw,72px)] leading-[1.02] tracking-[-0.04em] text-[#0A0A0A] whitespace-nowrap">
+              Back to basics<span className="text-[#FE4C02]">.</span>
             </h2>
           </Reveal>
 
-          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[460px] lg:ml-auto">
+          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[480px] lg:ml-auto">
             <p className="m-0 font-normal text-[clamp(14px,1.1vw,16px)] leading-[1.65] text-[#57544F]">
-              Before fitness got complicated, training was simple: pick the weight up, move it well, do it better than last week. FORJ runs that way on purpose. Eight-week cycles where every week builds on the last — same movements, more load, cleaner technique. By week eight you don&apos;t just feel different. You measure different.
+              Eight-week cycles. Every week builds on the last — more load, cleaner technique — until you can see the change for yourself.
+            </p>
+            <p className="m-0 mt-3 font-normal text-[13.5px] leading-[1.6] text-[#8C8A86]">
+              Trained for years or it&apos;s day one — you train the same way here, with a plan and people who show up beside you.
             </p>
           </Reveal>
         </div>

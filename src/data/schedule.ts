@@ -20,7 +20,7 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
     id: "tue",
     number: "02",
     day: "TUESDAY",
-    name: "ENGINE",
+    name: "CONDITION",
     subtitle: "Conditioning",
     description: "Runs, carries, interval efforts, and conditioning circuits that build a relentless engine. Pure work, programmed properly.",
   },
@@ -60,7 +60,7 @@ export const WEEKLY_SCHEDULE: ScheduleCard[] = [
 
 export const TICKER_ITEMS = [
   "FORJ Strong",
-  "FORJ Engine",
+  "FORJ Condition",
   "FORJ Legs",
   "FORJ Hybrid",
   "FORJ Upper",

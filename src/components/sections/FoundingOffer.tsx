@@ -23,14 +23,13 @@ export function FoundingOffer({
           <Reveal duration={0.7} className="w-full lg:w-1/2 lg:max-w-[50%]">
             <h2 className="m-0 font-semibold text-[clamp(38px,5vw,76px)] leading-[0.96] tracking-[-0.04em] text-white">
               Become a<br />
-              founding member
-              <span className="text-[#FE4C02]">.</span>
+              founding member<span className="text-[#FE4C02]">.</span>
             </h2>
           </Reveal>
 
-          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[440px] lg:ml-auto">
+          <Reveal duration={0.7} delay={0.2} className="w-full lg:max-w-[480px] lg:ml-auto">
             <p className="m-0 font-normal text-[clamp(13.5px,1vw,15px)] leading-[1.65] text-[#8C8A86]">
-              A founding membership is a bet on the room before the doors open — and the only time this rate will ever exist. Twenty spots. When they&apos;re gone, they&apos;re gone for good.
+              A founding seat is a bet on the room before the doors open, at a rate that only exists for this first cohort — held for your full founding year.
             </p>
           </Reveal>
         </div>
@@ -40,7 +39,7 @@ export function FoundingOffer({
           {/* Left Column: Gym Image */}
           <div className="lg:col-span-6 relative aspect-[4/4.2] sm:aspect-[4/4] lg:aspect-[4/4.3] w-full overflow-hidden rounded-none bg-[#111]">
             <Image
-              src="/images/founding-gym.webp"
+              src="/images/cta-section.webp"
               alt="FORJ Founding Gym Room"
               fill
               priority
@@ -53,15 +52,20 @@ export function FoundingOffer({
           <div className="lg:col-span-6 flex flex-col justify-center lg:pl-4">
             {/* Price Row: AED 999 /month */}
             <Reveal duration={0.7} delay={0.1}>
-              <div className="flex items-baseline gap-3 pb-8">
-                <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80">
-                  AED
-                </span>
-                <span className="font-light sm:font-normal text-[clamp(60px,7.5vw,112px)] leading-none tracking-[-0.04em] text-white">
-                  {price}
-                </span>
-                <span className="text-[20px] sm:text-[24px] font-normal tracking-tight text-white/80">
-                  /month
+              <div className="flex flex-col pb-8">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80">
+                    AED
+                  </span>
+                  <span className="font-light sm:font-normal text-[clamp(60px,7.5vw,112px)] leading-none tracking-[-0.04em] text-white">
+                    {price}
+                  </span>
+                  <span className="text-[20px] sm:text-[24px] font-normal tracking-tight text-white/80">
+                    /month
+                  </span>
+                </div>
+                <span className="text-[12.5px] font-mono tracking-wider text-[#8C8A86] uppercase mt-1">
+                  12-MONTH FOUNDING TERM
                 </span>
               </div>
             </Reveal>
@@ -86,7 +90,7 @@ export function FoundingOffer({
             {/* Terms line */}
             <div className="mt-5">
               <p className="m-0 text-[12px] sm:text-[12.5px] leading-[1.6] text-[#8C8A86]">
-                First month collected at signup; monthly after. Founding runs on a 12-month commitment — the rate stays yours while your membership stays active.
+                First month collected today. Everything after runs monthly through your member account.
               </p>
             </div>
 
@@ -99,7 +103,7 @@ export function FoundingOffer({
                   size="lg"
                   className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[13px] tracking-[0.08em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A]"
                 >
-                  CLAIM FOUNDING MEMBERSHIP
+                  BECOME A FOUNDING MEMBER
                 </Button>
               </div>
             </Reveal>
