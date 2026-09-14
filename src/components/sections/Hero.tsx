@@ -24,7 +24,7 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
         {/* Left Column Full-Height Image */}
         <div className="relative w-full h-full overflow-hidden">
           <Image
-            src="/hero-img.webp"
+            src="/hero-img2.webp"
             alt="FORJ Athlete Training"
             fill
             priority
