@@ -76,7 +76,7 @@ export function FoundingOffer({
                 </div>
 
                 <div className="flex flex-col gap-1 mt-3">
-                  <span className="text-[13px] font-mono font-medium tracking-wider text-[#FE4C02] uppercase">
+                  <span className="text-[13px] font-mono font-medium tracking-wider text-white uppercase">
                     FOUNDING OFFER · FIRST-ATTENDEE MEMBERS
                   </span>
                   <span className="text-[12px] font-mono tracking-wider text-[#8C8A86] uppercase">
