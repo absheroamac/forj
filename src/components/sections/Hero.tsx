@@ -96,12 +96,14 @@ export function Hero({}: HeroProps) {
                   >
                     JOIN THE FOUNDING LIST
                   </Button>
-                  <a
+                  <Button
                     href="#waitlist"
-                    className="text-[13px] md:text-[14px] text-[#8C8A86] hover:text-white underline underline-offset-4 transition-colors"
+                    variant="outline"
+                    size="lg"
+                    className="bg-transparent text-white/90 border border-white/25 font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:border-white hover:text-white hover:bg-white/5"
                   >
-                    or just get updates
-                  </a>
+                    STAY IN TOUCH
+                  </Button>
                 </div>
               </Reveal>
             </div>
