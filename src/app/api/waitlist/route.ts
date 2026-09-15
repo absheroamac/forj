@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+const DEFAULT_GOOGLE_SHEET_URL =
+  "https://script.google.com/macros/s/AKfycbxYewmMmvA34GcWhtm76zkPGIRbh691tu6vjmc5Imv0BGJzH-7YUhnhWz5ef5hvtL7V/exec";
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -22,7 +25,8 @@ export async function POST(request: Request) {
 
     const googleSheetUrl =
       process.env.GOOGLE_SHEET_URL ||
-      process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+      process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL ||
+      DEFAULT_GOOGLE_SHEET_URL;
 
     if (googleSheetUrl) {
       try {
@@ -32,21 +36,15 @@ export async function POST(request: Request) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
+          redirect: "follow",
         });
 
         if (!response.ok) {
-          console.error("Google Sheet webhook error:", await response.text());
+          console.error("Google Sheet webhook error status:", response.status);
         }
       } catch (sheetError) {
         console.error("Failed to push to Google Sheet:", sheetError);
-        // Continue and return success to the user so lead is not blocked
       }
-    } else {
-      console.log(
-        "[Waitlist Lead Received]:",
-        payload,
-        "(Tip: Set GOOGLE_SHEET_URL in .env.local to automatically forward leads to Google Sheets)"
-      );
     }
 
     return NextResponse.json(
