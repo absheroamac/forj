@@ -59,20 +59,19 @@ export function FoundingOffer({
                   </span>
                 </div>
 
-                <div className="flex items-baseline gap-4 sm:gap-6 flex-wrap">
-                  {/* Striked off 1,400 on the left side */}
-                  <div className="flex items-baseline gap-1.5 text-[#8C8A86] line-through decoration-[#FE4C02] decoration-2 select-none">
-                    <span className="text-[17px] sm:text-[20px] font-medium tracking-tight">AED</span>
-                    <span className="text-[clamp(32px,4vw,56px)] font-light sm:font-normal leading-none tracking-[-0.03em]">
+                <div className="flex items-baseline gap-3 sm:gap-4 flex-wrap">
+                  {/* Striked off 1,400 with AED on the left side */}
+                  <div className="flex items-baseline gap-1.5 text-[#8C8A86] select-none">
+                    <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80 not-italic">
+                      AED
+                    </span>
+                    <span className="text-[clamp(32px,4vw,56px)] font-light sm:font-normal leading-none tracking-[-0.03em] line-through decoration-[#FE4C02] decoration-2">
                       1,400
                     </span>
                   </div>
 
-                  {/* Actual Price 999 */}
-                  <div className="flex items-baseline gap-2.5 sm:gap-3">
-                    <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80">
-                      AED
-                    </span>
+                  {/* Actual Price 999 (Second AED removed) */}
+                  <div className="flex items-baseline gap-2 sm:gap-2.5">
                     <span className="font-light sm:font-normal text-[clamp(60px,7.5vw,112px)] leading-none tracking-[-0.04em] text-white">
                       {price}
                     </span>
