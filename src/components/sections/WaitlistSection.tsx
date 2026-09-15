@@ -100,18 +100,38 @@ export function WaitlistSection() {
             <AnimatePresence mode="wait">
               {isSubmitted ? (
                 <motion.div
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="p-6 sm:p-8 border border-[#FE4C02]/40 bg-[#FE4C02]/5 rounded-none flex flex-col gap-3.5 shadow-sm"
+                  className="p-7 sm:p-9 border border-[#0A0A0A]/10 bg-[#FBFBFA] rounded-none flex flex-col gap-4 shadow-sm"
                 >
-                  <div className="flex items-center gap-2.5 text-[#FE4C02] font-semibold text-[17px]">
-                    <CheckCircle2 size={22} />
-                    <span>You&apos;re on the list, {formData.name.split(" ")[0]}!</span>
+                  <div className="flex items-center gap-2.5 text-[#059669] bg-[#10B981]/10 border border-[#10B981]/25 px-3 py-1.5 w-fit">
+                    <CheckCircle2 size={16} className="text-[#059669]" />
+                    <span className="text-[12px] font-bold tracking-wider uppercase">Spot Reserved</span>
                   </div>
-                  <p className="text-[14px] leading-[1.6] text-[#2B2927] m-0">
-                    We&apos;ve reserved your priority spot for <strong>{formData.email}</strong> ({formData.phone}). We&apos;ll reach out ahead of our October 2026 opening in Meydan.
-                  </p>
+
+                  <div>
+                    <h3 className="m-0 font-bold text-[22px] sm:text-[24px] tracking-[-0.03em] text-[#0A0A0A]">
+                      You&apos;re on the list, {formData.name.split(" ")[0]}!
+                    </h3>
+                    <p className="m-0 mt-2 text-[14px] leading-[1.6] text-[#57544F]">
+                      We&apos;ve recorded your details and reserved your priority spot. We&apos;ll be in touch ahead of our October 2026 opening in Meydan.
+                    </p>
+                  </div>
+
+                  {/* Summary details card */}
+                  <div className="bg-white border border-[#0A0A0A]/8 p-4 flex flex-col gap-2 mt-1 text-[13.5px]">
+                    <div className="flex items-center justify-between text-[#8C8A86]">
+                      <span className="font-medium text-[11.5px] uppercase tracking-wider">Email</span>
+                      <span className="font-medium text-[#0A0A0A]">{formData.email}</span>
+                    </div>
+                    <div className="h-[1px] bg-[#0A0A0A]/5" />
+                    <div className="flex items-center justify-between text-[#8C8A86]">
+                      <span className="font-medium text-[11.5px] uppercase tracking-wider">Phone</span>
+                      <span className="font-medium text-[#0A0A0A]">{formData.phone}</span>
+                    </div>
+                  </div>
+
                   <button
                     type="button"
                     onClick={() => {
@@ -119,7 +139,7 @@ export function WaitlistSection() {
                       setFormData({ name: "", email: "", phone: "" });
                       setAgreed(false);
                     }}
-                    className="self-start text-[12.5px] font-medium text-[#57544F] hover:text-[#FE4C02] underline mt-3 cursor-pointer transition-colors"
+                    className="self-start text-[12.5px] font-semibold text-[#57544F] hover:text-[#0A0A0A] underline underline-offset-4 mt-2 cursor-pointer transition-colors"
                   >
                     Submit another response
                   </button>
