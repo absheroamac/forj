@@ -39,7 +39,7 @@ export async function POST(request: Request) {
       email: email.trim(),
       phone: safePhone,
       submittedAt: getDubaiFormattedTimestamp(),
-      source: "FORJ Fitness Landing Page",
+      source: "Opening Updates",
     };
 
     const googleSheetUrl =

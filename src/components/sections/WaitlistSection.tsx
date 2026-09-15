@@ -107,15 +107,15 @@ export function WaitlistSection() {
                 >
                   <div className="flex items-center gap-2.5 text-[#059669] bg-[#10B981]/10 border border-[#10B981]/25 px-3 py-1.5 w-fit">
                     <CheckCircle2 size={16} className="text-[#059669]" />
-                    <span className="text-[12px] font-bold tracking-wider uppercase">Spot Reserved</span>
+                    <span className="text-[12px] font-bold tracking-wider uppercase">Subscribed for Updates</span>
                   </div>
 
                   <div>
                     <h3 className="m-0 font-bold text-[22px] sm:text-[24px] tracking-[-0.03em] text-[#0A0A0A]">
-                      You&apos;re on the list, {formData.name.split(" ")[0]}!
+                      You&apos;re all set, {formData.name.split(" ")[0]}!
                     </h3>
                     <p className="m-0 mt-2 text-[14px] leading-[1.6] text-[#57544F]">
-                      We&apos;ve recorded your details and reserved your priority spot. We&apos;ll be in touch ahead of our October 2026 opening in Meydan.
+                      We&apos;ve added your details to our updates list. We&apos;ll send you opening announcements and news ahead of our October 2026 opening in Meydan.
                     </p>
                   </div>
 
