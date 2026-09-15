@@ -50,28 +50,38 @@ export function FoundingOffer({
 
           {/* Right Column: Pricing, Perks List, Terms & CTA Button */}
           <div className="lg:col-span-6 flex flex-col justify-center lg:pl-4">
-            {/* Price Row: Strikethrough AED 1,400 -> Actual Price AED 999 /month */}
+            {/* Price Row: Strikethrough AED 1,400 on left side of Actual Price AED 999 /month */}
             <Reveal duration={0.7} delay={0.1}>
               <div className="flex flex-col pb-8">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-[#8C8A86] line-through decoration-[#FE4C02] decoration-2">
-                    AED 1,400
-                  </span>
-                  <span className="bg-[#FE4C02]/15 text-[#FE4C02] border border-[#FE4C02]/30 text-[11px] sm:text-[11.5px] font-bold px-2.5 py-1 tracking-wider uppercase">
+                <div className="mb-3">
+                  <span className="bg-[#FE4C02]/15 text-[#FE4C02] border border-[#FE4C02]/30 text-[11px] sm:text-[11.5px] font-bold px-2.5 py-1 tracking-wider uppercase inline-block">
                     FOUNDING OFFER · FIRST-ATTENDEE MEMBERS
                   </span>
                 </div>
-                <div className="flex items-baseline gap-3">
-                  <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80">
-                    AED
-                  </span>
-                  <span className="font-light sm:font-normal text-[clamp(60px,7.5vw,112px)] leading-none tracking-[-0.04em] text-white">
-                    {price}
-                  </span>
-                  <span className="text-[20px] sm:text-[24px] font-normal tracking-tight text-white/80">
-                    /month
-                  </span>
+
+                <div className="flex items-baseline gap-4 sm:gap-6 flex-wrap">
+                  {/* Striked off 1,400 on the left side */}
+                  <div className="flex items-baseline gap-1.5 text-[#8C8A86] line-through decoration-[#FE4C02] decoration-2 select-none">
+                    <span className="text-[17px] sm:text-[20px] font-medium tracking-tight">AED</span>
+                    <span className="text-[clamp(32px,4vw,56px)] font-light sm:font-normal leading-none tracking-[-0.03em]">
+                      1,400
+                    </span>
+                  </div>
+
+                  {/* Actual Price 999 */}
+                  <div className="flex items-baseline gap-2.5 sm:gap-3">
+                    <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80">
+                      AED
+                    </span>
+                    <span className="font-light sm:font-normal text-[clamp(60px,7.5vw,112px)] leading-none tracking-[-0.04em] text-white">
+                      {price}
+                    </span>
+                    <span className="text-[20px] sm:text-[24px] font-normal tracking-tight text-white/80">
+                      /month
+                    </span>
+                  </div>
                 </div>
+
                 <span className="text-[12.5px] font-mono tracking-wider text-[#8C8A86] uppercase mt-2">
                   12-MONTH FOUNDING TERM · LOCKED RATE FOR FIRST-ATTENDEE MEMBERS
                 </span>
