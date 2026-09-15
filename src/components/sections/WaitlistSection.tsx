@@ -169,44 +169,47 @@ export function WaitlistSection() {
                     />
                   </div>
 
-                  {/* Email Field */}
-                  <div>
-                    <label
-                      htmlFor="waitlist-email"
-                      className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      id="waitlist-email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@email.com"
-                      className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
-                    />
-                  </div>
+                  {/* Email & Phone Fields (Single Row) */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Email Field */}
+                    <div>
+                      <label
+                        htmlFor="waitlist-email"
+                        className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        id="waitlist-email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@email.com"
+                        className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
+                      />
+                    </div>
 
-                  {/* Phone Field */}
-                  <div>
-                    <label
-                      htmlFor="waitlist-phone"
-                      className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
-                    >
-                      Phone / WhatsApp Number
-                    </label>
-                    <input
-                      id="waitlist-phone"
-                      name="phone"
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+971 50 123 4567"
-                      className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
-                    />
+                    {/* Phone Field */}
+                    <div>
+                      <label
+                        htmlFor="waitlist-phone"
+                        className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
+                      >
+                        Phone / WhatsApp
+                      </label>
+                      <input
+                        id="waitlist-phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+971 50 123 4567"
+                        className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
+                      />
+                    </div>
                   </div>
 
                   {/* Error Notification */}
