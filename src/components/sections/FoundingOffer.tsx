@@ -50,17 +50,9 @@ export function FoundingOffer({
 
           {/* Right Column: Pricing, Perks List, Terms & CTA Button */}
           <div className="lg:col-span-6 flex flex-col justify-center lg:pl-4">
-            {/* Price Row: AED 1499 striked off -> AED 999 /month */}
+            {/* Price Row: AED 999 /month */}
             <Reveal duration={0.7} delay={0.1}>
               <div className="flex flex-col pb-8">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-[#8C8A86] line-through decoration-[#FE4C02] decoration-2">
-                    AED 1,499
-                  </span>
-                  <span className="bg-[#FE4C02]/15 text-[#FE4C02] border border-[#FE4C02]/30 text-[11px] sm:text-[11.5px] font-bold px-2.5 py-1 tracking-wider uppercase">
-                    FIRST 20 FOUNDING MEMBERS
-                  </span>
-                </div>
                 <div className="flex items-baseline gap-3">
                   <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80">
                     AED
@@ -72,8 +64,8 @@ export function FoundingOffer({
                     /month
                   </span>
                 </div>
-                <span className="text-[12.5px] font-mono tracking-wider text-[#8C8A86] uppercase mt-2">
-                  AED 1,499 REGULAR RATE · AED 999 FOR FIRST 20 FOUNDING MEMBERS
+                <span className="text-[12.5px] font-mono tracking-wider text-[#8C8A86] uppercase mt-1">
+                  12-MONTH FOUNDING TERM
                 </span>
               </div>
             </Reveal>
@@ -108,12 +100,11 @@ export function FoundingOffer({
                 <Button
                   href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
                   target="_blank"
-                  rel="noopener noreferrer"
                   variant="primary"
                   size="lg"
-                  className="bg-[#FE4C02] text-[#0A0A0A] font-bold text-[13px] md:text-[14px] tracking-[0.08em] uppercase px-8 py-4 min-h-[52px] hover:bg-white hover:text-[#0A0A0A] transition-all duration-200"
+                  className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[13px] tracking-[0.08em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A]"
                 >
-                  BUY 999 MEMBERSHIP PLAN
+                  BECOME A FOUNDING MEMBER
                 </Button>
               </div>
             </Reveal>

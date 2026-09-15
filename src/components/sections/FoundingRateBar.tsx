@@ -44,17 +44,14 @@ export function FoundingRateBar({
             {/* Cell 2: Locked Rate */}
             <div className="p-5 lg:px-7 lg:py-6 flex flex-col justify-between gap-2.5">
               <span className="text-[11px] font-medium tracking-[0.14em] uppercase text-[#8C8A86]">
-                FOUNDING RATE · FIRST 20 MEMBERS
+                LOCKED RATE
               </span>
-              <div className="flex items-baseline gap-2.5 flex-wrap">
-                <span className="text-[15px] font-medium text-[#8C8A86] line-through decoration-[#FE4C02]">
-                  AED 1,499
-                </span>
+              <div className="flex items-baseline gap-2">
                 <span className="text-[22px] lg:text-[24px] font-semibold tracking-[-0.03em] text-white">
                   AED {price}
                 </span>
                 <span className="text-[12.5px] text-[#8C8A86]">
-                  / month
+                  / month · Yours for as long as you stay
                 </span>
               </div>
             </div>
@@ -86,7 +83,7 @@ export function FoundingRateBar({
                   OCTOBER 2026
                 </span>
                 <span className="text-[14px] lg:text-[15px] font-semibold text-white group-hover:text-[#0A0A0A] tracking-[0.02em] uppercase transition-colors">
-                  Buy 999 membership
+                  Claim founding membership
                 </span>
               </div>
               <div className="w-9 h-9 rounded-none border border-white/20 group-hover:border-[#0A0A0A] group-hover:bg-[#0A0A0A] flex items-center justify-center transition-colors">
