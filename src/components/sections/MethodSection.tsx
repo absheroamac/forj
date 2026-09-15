@@ -40,8 +40,19 @@ const SHOWCASE_SLIDES = [
 export function MethodSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [isPillarsPaused, setIsPillarsPaused] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const pillarTouchStartX = useRef<number | null>(null);
+
+  // Auto-slide effect for Pillars Carousel (advances every 4.8 seconds when not hovered)
+  useEffect(() => {
+    if (isPillarsPaused) return;
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % METHOD_PILLARS.length);
+    }, 4800);
+    return () => clearInterval(timer);
+  }, [isPillarsPaused]);
 
   // Auto-slide effect for Meydan Carousel (advances every 4.5 seconds when not hovered)
   useEffect(() => {
@@ -95,6 +106,20 @@ export function MethodSection() {
     touchStartX.current = null;
   };
 
+  const handlePillarTouchStart = (e: React.TouchEvent) => {
+    pillarTouchStartX.current = e.touches[0].clientX;
+  };
+
+  const handlePillarTouchEnd = (e: React.TouchEvent) => {
+    if (pillarTouchStartX.current === null) return;
+    const diffX = pillarTouchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diffX) > 40) {
+      if (diffX > 0) nextPillar();
+      else prevPillar();
+    }
+    pillarTouchStartX.current = null;
+  };
+
   return (
     <section id="method" className="bg-white text-[#0A0A0A] relative">
       {/* 1. Section Headline & Method Story Narrative */}
@@ -116,8 +141,14 @@ export function MethodSection() {
           </Reveal>
         </div>
 
-        {/* 2. Interactive Method Pillars Carousel (01, 02, 03) */}
-        <div className="py-2 sm:py-4 bg-white">
+        {/* 2. Interactive Method Pillars Carousel (01, 02, 03 - Auto-Sliding) */}
+        <div
+          className="py-2 sm:py-4 bg-white select-none"
+          onMouseEnter={() => setIsPillarsPaused(true)}
+          onMouseLeave={() => setIsPillarsPaused(false)}
+          onTouchStart={handlePillarTouchStart}
+          onTouchEnd={handlePillarTouchEnd}
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Column 1: Numbers (01 / 02 / 03) + Controls */}
             <div className="lg:col-span-2 flex flex-col items-start gap-6 select-none">
