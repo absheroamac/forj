@@ -14,7 +14,7 @@ export function Hero({}: HeroProps) {
   return (
     <section
       id="top"
-      className="relative bg-[#0A0A0A] w-full min-h-[calc(100vh-74px)] flex flex-col justify-center overflow-hidden border-b border-white/[0.08]"
+      className="relative bg-[#0A0A0A] w-full min-h-[calc(100vh-74px)] flex flex-col justify-start overflow-hidden border-b border-white/[0.08]"
     >
       {/* 2-Column Split Background: Left Image (full top-to-bottom) + Right Black */}
       <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 w-full h-full pointer-events-none">
@@ -44,15 +44,15 @@ export function Hero({}: HeroProps) {
         <div className="hidden lg:block bg-[#0A0A0A] w-full h-full" />
       </div>
 
-      {/* Foreground Content Container */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(24px,3.5vh,48px)] pb-[clamp(24px,3.5vh,44px)] flex flex-col justify-center flex-1">
+      {/* Foreground Content Container (Top Aligned) */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(40px,5.5vh,88px)] pb-[clamp(32px,4vh,64px)] flex flex-col justify-start flex-1">
         {/* 2-Column Body Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-center my-auto py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-start">
           {/* Left Column Spacer (Allows athlete visual to show through unobstructed) */}
           <div className="hidden lg:block pointer-events-none" />
 
-          {/* Right Column: Eyebrow + Left-Aligned Title + Copy & Actions */}
-          <div className="flex flex-col justify-center items-start text-left lg:pl-6 py-2">
+          {/* Right Column: Eyebrow + Left-Aligned Title + Copy & Actions (Top Aligned) */}
+          <div className="flex flex-col justify-start items-start text-left lg:pl-6">
             <Reveal duration={0.7} delay={0.1}>
               <div className="font-mono text-[11px] sm:text-[12px] tracking-[0.14em] text-white/50 uppercase mb-3">
                 MEYDAN, DUBAI · OPENING OCTOBER 2026
