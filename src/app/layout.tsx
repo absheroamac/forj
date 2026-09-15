@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Archivo } from "next/font/google";
 import "./globals.css";
 
@@ -60,6 +61,19 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-[#0A0A0A] text-white antialiased flex flex-col font-sans">
+        {/* Google Analytics (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XBBR1JMWVT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XBBR1JMWVT');
+          `}
+        </Script>
         {children}
       </body>
     </html>
