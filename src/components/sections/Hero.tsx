@@ -44,61 +44,67 @@ export function Hero({}: HeroProps) {
         <div className="hidden lg:block bg-[#0A0A0A] w-full h-full" />
       </div>
 
-      {/* Foreground Content Container (Top Aligned) */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(40px,5.5vh,88px)] pb-[clamp(32px,4vh,64px)] flex flex-col justify-start flex-1">
+      {/* Foreground Content Container (Split Top / Bottom) */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(32px,4vh,60px)] pb-[clamp(32px,4.5vh,64px)] flex flex-col justify-between flex-1">
         {/* 2-Column Body Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full flex-1">
           {/* Left Column Spacer (Allows athlete visual to show through unobstructed) */}
           <div className="hidden lg:block pointer-events-none" />
 
-          {/* Right Column: Eyebrow + Left-Aligned Title + Copy & Actions (Top Aligned) */}
-          <div className="flex flex-col justify-start items-start text-left lg:pl-6">
-            <Reveal duration={0.7} delay={0.1}>
-              <div className="font-mono text-[11px] sm:text-[12px] tracking-[0.14em] text-white/50 uppercase mb-3">
-                MEYDAN, DUBAI · OPENING OCTOBER 2026
-              </div>
-            </Reveal>
+          {/* Right Column: Top Title + Bottom Aligned Copy & Actions */}
+          <div className="flex flex-col justify-between items-start text-left lg:pl-6 h-full w-full">
+            {/* Top Part: Eyebrow + Headline */}
+            <div>
+              <Reveal duration={0.7} delay={0.1}>
+                <div className="font-mono text-[11px] sm:text-[12px] tracking-[0.14em] text-white/50 uppercase mb-3">
+                  MEYDAN, DUBAI · OPENING OCTOBER 2026
+                </div>
+              </Reveal>
 
-            <Reveal duration={0.8} delay={0.2}>
-              <h1 className="m-0 font-semibold text-[clamp(38px,4.8vw,78px)] leading-[0.98] tracking-[-0.04em] text-white text-left whitespace-normal">
-                A studio with a dojo philosophy.
-                <span className="block text-white/90 mt-1">
-                  Not a gym<span className="text-[#FE4C02]">.</span>
-                </span>
-              </h1>
-            </Reveal>
+              <Reveal duration={0.8} delay={0.2}>
+                <h1 className="m-0 font-semibold text-[clamp(38px,4.8vw,78px)] leading-[0.98] tracking-[-0.04em] text-white text-left whitespace-normal">
+                  A studio with a dojo philosophy.
+                  <span className="block text-white/90 mt-1">
+                    Not a gym<span className="text-[#FE4C02]">.</span>
+                  </span>
+                </h1>
+              </Reveal>
+            </div>
 
-            <Reveal duration={0.7} delay={0.3}>
-              <p className="m-0 mt-6 font-normal text-[clamp(16px,1.25vw,20px)] leading-[1.5] tracking-[-0.015em] text-white max-w-[520px]">
-                Small-group coached strength. Eight people to a class. A coach who knows your name.
-              </p>
-            </Reveal>
+            {/* Bottom Part: Paragraphs & CTA Buttons */}
+            <div className="mt-auto pt-10 sm:pt-14 w-full">
+              <Reveal duration={0.7} delay={0.3}>
+                <p className="m-0 font-normal text-[clamp(16px,1.25vw,20px)] leading-[1.5] tracking-[-0.015em] text-white max-w-[520px]">
+                  Small-group coached strength. Eight people to a class. A coach who knows your name.
+                </p>
+              </Reveal>
 
-            <Reveal duration={0.7} delay={0.38}>
-              <p className="m-0 mt-3 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[460px]">
-                A limited founding cohort, before the doors open.
-              </p>
-            </Reveal>
+              <Reveal duration={0.7} delay={0.38}>
+                <p className="m-0 mt-3 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[460px]">
+                  A limited founding cohort, before the doors open.
+                </p>
+              </Reveal>
 
-            {/* Action Buttons Row */}
-            <Reveal duration={0.7} delay={0.46}>
-              <div className="flex items-center gap-4 flex-wrap mt-[clamp(24px,3vh,36px)]">
-                <Button
-                  href="#offer"
-                  variant="outline"
-                  size="lg"
-                  className="bg-[#0A0A0A] text-white border border-[#FE4C02] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
-                >
-                  JOIN THE FOUNDING LIST
-                </Button>
-                <a
-                  href="#waitlist"
-                  className="text-[13px] md:text-[14px] text-[#8C8A86] hover:text-white underline underline-offset-4 transition-colors"
-                >
-                  or just get updates
-                </a>
-              </div>
-            </Reveal>
+              {/* Action Buttons Row */}
+              <Reveal duration={0.7} delay={0.46}>
+                <div className="flex items-center gap-4 flex-wrap mt-[clamp(24px,3vh,36px)]">
+                  <Button
+                    href="#offer"
+                    variant="outline"
+                    size="lg"
+                    className="bg-[#0A0A0A] text-white border border-[#FE4C02] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
+                  >
+                    JOIN THE FOUNDING LIST
+                  </Button>
+                  <a
+                    href="#waitlist"
+                    className="text-[13px] md:text-[14px] text-[#8C8A86] hover:text-white underline underline-offset-4 transition-colors"
+                  >
+                    or just get updates
+                  </a>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </div>
