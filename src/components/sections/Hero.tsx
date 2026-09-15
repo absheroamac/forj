@@ -77,28 +77,32 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
             </Reveal>
 
             <Reveal duration={0.7} delay={0.38}>
-              <p className="m-0 mt-3 font-normal text-[clamp(13px,0.95vw,14.5px)] leading-[1.6] text-[#8C8A86] max-w-[460px]">
-                A limited founding cohort, before the doors open.
-              </p>
+              <div className="flex flex-wrap items-center gap-3 mt-4 pt-1">
+                <span className="text-[16px] sm:text-[18px] font-medium text-[#8C8A86] line-through decoration-[#FE4C02] decoration-2">
+                  AED 1,499
+                </span>
+                <span className="text-[20px] sm:text-[22px] font-bold text-white tracking-tight">
+                  AED 999<span className="text-[13px] font-normal text-[#8C8A86]">/month</span>
+                </span>
+                <span className="text-[11px] sm:text-[11.5px] font-semibold text-[#FE4C02] tracking-wider uppercase bg-[#FE4C02]/15 border border-[#FE4C02]/30 px-2.5 py-1">
+                  First 20 founding members
+                </span>
+              </div>
             </Reveal>
 
-            {/* Action Buttons Row */}
+            {/* Action Buttons Row: Single CTA to buy 999 plan */}
             <Reveal duration={0.7} delay={0.46}>
-              <div className="flex items-center gap-4 flex-wrap mt-[clamp(24px,3vh,36px)]">
+              <div className="flex items-center gap-4 flex-wrap mt-[clamp(20px,2.5vh,32px)]">
                 <Button
-                  href="#offer"
-                  variant="outline"
+                  href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="primary"
                   size="lg"
-                  className="bg-[#0A0A0A] text-white border border-[#FE4C02] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
+                  className="bg-[#FE4C02] text-[#0A0A0A] font-bold text-[12px] md:text-[13px] tracking-[0.08em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A] transition-all duration-200"
                 >
-                  JOIN THE FOUNDING LIST
+                  BUY 999 MEMBERSHIP PLAN
                 </Button>
-                <a
-                  href="#waitlist"
-                  className="text-[13px] md:text-[14px] text-[#8C8A86] hover:text-white underline underline-offset-4 transition-colors"
-                >
-                  or just get updates
-                </a>
               </div>
             </Reveal>
           </div>
@@ -116,8 +120,8 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
                   {seats}
                 </span>
                 <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span className="text-white font-medium">founding memberships.</span>
-                  <span>Once. Never repeated.</span>
+                  <span className="text-white font-medium">founding memberships at AED 999.</span>
+                  <span>AED 1,499 striked off for first 20.</span>
                 </div>
               </div>
 

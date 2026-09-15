@@ -61,12 +61,14 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden sm:block flex-none">
             <Button
-              href="#offer"
-              variant="outline"
+              href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
               size="sm"
-              className="text-[11.5px] tracking-[0.14em] font-semibold uppercase px-5 py-2.5 min-h-[38px] border-[#FE4C02] text-white hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
+              className="text-[11.5px] tracking-[0.14em] font-bold uppercase px-5 py-2.5 min-h-[38px] bg-[#FE4C02] text-[#0A0A0A] hover:bg-white hover:text-[#0A0A0A]"
             >
-              JOIN THE FOUNDING LIST
+              BUY 999 MEMBERSHIP
             </Button>
           </div>
 
@@ -102,13 +104,15 @@ export function Navbar() {
               ))}
               <div className="pt-2">
                 <Button
-                  href="#offer"
+                  href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="primary"
                   size="md"
-                  className="w-full text-center"
+                  className="w-full text-center bg-[#FE4C02] text-[#0A0A0A] font-bold"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  JOIN THE FOUNDING LIST
+                  BUY 999 MEMBERSHIP
                 </Button>
               </div>
             </motion.div>
