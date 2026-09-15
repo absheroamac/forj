@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -110,7 +109,7 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
       <div className="relative z-10 w-full border-t border-white/10 bg-[#0A0A0A]/95 backdrop-blur-md py-2 sm:py-3">
         <div className="w-full max-w-[1600px] mx-auto px-[clamp(16px,2.5vw,48px)]">
           <Reveal duration={0.6}>
-            <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-y-4 gap-x-2 sm:gap-x-4">
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-y-4 gap-x-6 sm:gap-x-8">
               {/* Item 1: 20 founding memberships */}
               <div className="flex items-center gap-3 sm:gap-4 py-2 pr-4 lg:pr-8">
                 <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
@@ -135,18 +134,6 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
                   <span>8-week cycles</span>
                 </div>
               </div>
-
-              {/* Item 3: Claim founding membership Box Button */}
-              <Link
-                href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-white/20 hover:border-[#FE4C02] hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] transition-all duration-200 cursor-pointer lg:ml-auto rounded-none"
-              >
-                <span className="font-bold text-[14px] sm:text-[15px] lg:text-[16px] tracking-[0.04em] uppercase not-italic leading-none">
-                  Claim founding membership
-                </span>
-              </Link>
             </div>
           </Reveal>
         </div>
