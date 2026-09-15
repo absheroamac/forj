@@ -86,11 +86,8 @@ export function WaitlistSection() {
               Not ready to commit
               <span className="text-[#FE4C02]">?</span>
             </h2>
-            <p className="m-0 mt-5 font-normal text-[15px] md:text-[16px] leading-[1.65] text-[#57544F] max-w-[460px]">
-              Stay in the loop. Leave your details to be the first to know when we release our official schedule, announce coaching cohorts, and open doors in Meydan.
-            </p>
-            <p className="m-0 mt-3 font-normal text-[13.5px] leading-[1.6] text-[#8C8A86] max-w-[440px]">
-              No pressure and no commitments — just first access and opening updates straight to your phone.
+            <p className="m-0 mt-5 font-normal text-[15px] md:text-[16px] leading-[1.6] text-[#57544F] max-w-[440px]">
+              Leave your details to get opening updates, schedule releases, and early access.
             </p>
           </Reveal>
 
