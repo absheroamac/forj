@@ -17,11 +17,40 @@ const NAV_LINKS = [
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.replace(/^#/, "");
+      if (!targetId || targetId === "top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.replaceState(null, "", window.location.pathname);
+        return;
+      }
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        const header = document.querySelector("header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 74;
+        const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = Math.max(0, elementPosition - headerHeight);
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+        window.history.replaceState(null, "", href);
+      }
+    }
+  };
+
   return (
     <>
       {/* Skip to Content */}
       <a
         href="#offer"
+        onClick={(e) => handleAnchorClick(e, "#offer")}
         className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[200] focus:bg-[#FE4C02] focus:text-[#0A0A0A] focus:px-4 focus:py-3 focus:font-medium focus:text-[13px]"
       >
         Skip to founding membership
@@ -30,9 +59,10 @@ export function Navbar() {
       <header className="sticky top-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-xl border-b border-white/[0.08]">
         <div className="w-full px-[clamp(16px,2.4vw,32px)] flex items-center justify-between gap-[clamp(16px,3vw,40px)] min-h-[74px]">
           {/* Logo */}
-          <Link
+          <a
             href="#top"
-            className="flex items-center flex-none mr-auto py-2 group"
+            onClick={(e) => handleAnchorClick(e, "#top")}
+            className="flex items-center flex-none mr-auto py-2 group cursor-pointer"
           >
             <div className="relative h-[44px] md:h-[52px] w-[120px] md:w-[145px] transition-transform duration-200 group-hover:scale-105">
               <Image
@@ -43,7 +73,7 @@ export function Navbar() {
                 className="object-contain object-left mix-blend-lighten transition-opacity group-hover:opacity-90"
               />
             </div>
-          </Link>
+          </a>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-[clamp(18px,2.5vw,36px)]">
@@ -51,7 +81,8 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[11.5px] font-medium tracking-[0.14em] text-white/80 hover:text-[#FE4C02] transition-colors duration-150 py-2 uppercase"
+                onClick={(e) => handleAnchorClick(e, link.href)}
+                className="text-[11.5px] font-medium tracking-[0.14em] text-white/80 hover:text-[#FE4C02] transition-colors duration-150 py-2 uppercase cursor-pointer"
               >
                 {link.label}
               </a>
@@ -94,8 +125,11 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-[13px] font-medium tracking-[0.1em] text-[#8C8A86] hover:text-white py-1 uppercase"
+                  onClick={(e) => {
+                    setMobileMenuOpen(false);
+                    handleAnchorClick(e, link.href);
+                  }}
+                  className="text-[13px] font-medium tracking-[0.1em] text-[#8C8A86] hover:text-white py-1 uppercase cursor-pointer"
                 >
                   {link.label}
                 </a>

@@ -176,3 +176,8 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Offset for sticky header on hash navigation */
+section[id] {
+  scroll-margin-top: 80px;
+}

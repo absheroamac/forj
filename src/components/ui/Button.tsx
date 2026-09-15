@@ -56,6 +56,51 @@ export function Button({
 
   if (href) {
     const isAnchor = href.startsWith("#");
+
+    if (isAnchor) {
+      const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        if (props.onClick) {
+          (props.onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>)(e);
+        }
+        e.preventDefault();
+        const targetId = href.replace(/^#/, "");
+        if (!targetId || targetId === "top") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.history.replaceState(null, "", window.location.pathname);
+          return;
+        }
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const header = document.querySelector("header");
+          const headerHeight = header ? header.getBoundingClientRect().height : 74;
+          const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = Math.max(0, elementPosition - headerHeight);
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+          window.history.replaceState(null, "", href);
+        }
+      };
+
+      return (
+        <motion.div
+          whileHover={{ scale: 1.015 }}
+          whileTap={{ scale: 0.985 }}
+          className="inline-block"
+        >
+          <a
+            href={href}
+            onClick={handleAnchorClick}
+            className={combinedClasses}
+          >
+            {children}
+          </a>
+        </motion.div>
+      );
+    }
+
     return (
       <motion.div
         whileHover={{ scale: 1.015 }}
@@ -67,7 +112,6 @@ export function Button({
           target={target}
           rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
           className={combinedClasses}
-          scroll={isAnchor}
         >
           {children}
         </Link>
