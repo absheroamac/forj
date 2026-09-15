@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { useScroll, useMotionValueEvent } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { METHOD_PILLARS } from "@/data/pillars";
 import { Reveal } from "@/components/animations/Reveal";
@@ -44,24 +43,6 @@ export function MethodSection() {
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
-  const pillarsContainerRef = useRef<HTMLDivElement>(null);
-
-  // Pillars Story Scroll (Framer Motion)
-  const { scrollYProgress: pillarProgress } = useScroll({
-    target: pillarsContainerRef,
-    offset: ["start start", "end end"],
-  });
-
-  useMotionValueEvent(pillarProgress, "change", (latest) => {
-    if (latest < 0.35) {
-      setActiveIndex(0);
-    } else if (latest < 0.70) {
-      setActiveIndex(1);
-    } else {
-      setActiveIndex(2);
-    }
-  });
-
   // Auto-slide effect for Meydan Carousel (advances every 4.5 seconds when not hovered)
   useEffect(() => {
     if (isPaused) return;
@@ -83,6 +64,14 @@ export function MethodSection() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  const nextPillar = () => {
+    setActiveIndex((prev) => (prev + 1) % METHOD_PILLARS.length);
+  };
+
+  const prevPillar = () => {
+    setActiveIndex((prev) => (prev === 0 ? METHOD_PILLARS.length - 1 : prev - 1));
+  };
 
   const nextSlide = () => {
     setSlideIndex((prev) => (prev + 1) % SHOWCASE_SLIDES.length);
@@ -109,8 +98,8 @@ export function MethodSection() {
   return (
     <section id="method" className="bg-white text-[#0A0A0A] relative">
       {/* 1. Section Headline & Method Story Narrative */}
-      <div className="w-full max-w-[1440px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(64px,8vw,120px)] pb-[clamp(48px,6vw,96px)]">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-[clamp(48px,6vw,88px)]">
+      <div className="w-full max-w-[1440px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(64px,8vw,120px)] pb-[clamp(48px,6vw,80px)]">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-[clamp(40px,5vw,72px)]">
           <Reveal duration={0.7} className="w-full lg:w-auto flex-none">
             <h2 className="m-0 font-semibold text-[clamp(32px,4.6vw,72px)] leading-[1.02] tracking-[-0.04em] text-[#0A0A0A] whitespace-nowrap">
               Back to basics<span className="text-[#FE4C02]">.</span>
@@ -127,13 +116,12 @@ export function MethodSection() {
           </Reveal>
         </div>
 
-        {/* 2. Interactive Storytelling Showcase (Pillars 01, 02, 03) */}
-        <div ref={pillarsContainerRef} className="relative min-h-[1600px] lg:min-h-[2600px]">
-          {/* Showcase Content */}
-          <div className="sticky top-20 sm:top-24 py-6 sm:py-8 bg-white z-20">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Column 1: Numbers (01 / 02 / 03) */}
-              <div className="lg:col-span-2 flex lg:flex-col items-center lg:items-start gap-6 lg:gap-4 select-none">
+        {/* 2. Interactive Method Pillars Carousel (01, 02, 03) */}
+        <div className="py-2 sm:py-4 bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Column 1: Numbers (01 / 02 / 03) + Controls */}
+            <div className="lg:col-span-2 flex flex-col items-start gap-6 select-none">
+              <div className="flex lg:flex-col items-center lg:items-start gap-6 lg:gap-4 select-none">
                 {METHOD_PILLARS.map((pillar, idx) => (
                   <button
                     key={pillar.id}
@@ -149,79 +137,96 @@ export function MethodSection() {
                 ))}
               </div>
 
-              {/* Column 2: Dynamic Image (Pre-rendered Stacked Cross-fade: ZERO Blinking / ZERO Unmounting) */}
-              <div className="lg:col-span-6 relative aspect-[16/11] w-full max-w-[540px] overflow-hidden rounded-none shadow-lg bg-[#0A0A0A]">
-                {METHOD_PILLARS.map((pillar, idx) => (
-                  <div
-                    key={pillar.id}
-                    className={`absolute inset-0 transition-opacity duration-400 ease-out transform-gpu ${
-                      idx === activeIndex
-                        ? "opacity-100 z-10 scale-100"
-                        : "opacity-0 z-0 scale-[1.02] pointer-events-none"
-                    }`}
-                  >
-                    <Image
-                      src={pillar.image}
-                      alt={pillar.alt}
-                      fill
-                      priority={idx === 0}
-                      className="object-cover object-center contrast-[1.05]"
-                      sizes="(max-width: 1024px) 100vw, 50vw"
+              {/* Progress indicators and Consistent Arrow Navigation */}
+              <div className="flex items-center gap-4 mt-2">
+                <div className="flex items-center gap-1.5 select-none">
+                  {METHOD_PILLARS.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveIndex(idx)}
+                      className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer select-none touch-manipulation ${
+                        idx === activeIndex
+                          ? "w-8 bg-[#FE4C02]"
+                          : "w-2.5 bg-[#0A0A0A]/20 hover:bg-[#0A0A0A]/40"
+                      }`}
+                      aria-label={`Go to step ${idx + 1}`}
                     />
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {/* Column 3: Title & Description Text (Smooth Stacked Transition) */}
-              <div className="lg:col-span-4 relative flex flex-col justify-center min-h-[160px] sm:min-h-[180px]">
-                {METHOD_PILLARS.map((pillar, idx) => (
-                  <div
-                    key={pillar.id}
-                    className={`transition-all duration-300 ease-out ${
-                      idx === activeIndex
-                        ? "opacity-100 translate-y-0 relative z-10"
-                        : "opacity-0 translate-y-2 pointer-events-none absolute inset-0 z-0"
-                    }`}
+                {/* Consistent Arrow Controls */}
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={prevPillar}
+                    aria-label="Previous method pillar"
+                    className="w-10 h-10 border border-[#0A0A0A]/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-[#0A0A0A] active:scale-95"
                   >
-                    <h3 className="m-0 font-semibold text-[clamp(28px,3vw,44px)] leading-[1.08] tracking-[-0.035em] text-[#0A0A0A]">
-                      {pillar.titleLine1 && pillar.titleLine2 ? (
-                        <>
-                          <span className="block">{pillar.titleLine1}</span>
-                          <span className="block">{pillar.titleLine2}</span>
-                        </>
-                      ) : (
-                        pillar.title
-                      )}
-                    </h3>
-                    <p className="m-0 mt-4 font-normal text-[15px] leading-[1.65] text-[#57544F] max-w-[360px]">
-                      {pillar.description}
-                    </p>
-                  </div>
-                ))}
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextPillar}
+                    aria-label="Next method pillar"
+                    className="w-10 h-10 border border-[#0A0A0A]/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-[#0A0A0A] active:scale-95"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Progress indicators */}
-            <div className="flex items-center gap-2 mt-8 select-none">
-              {METHOD_PILLARS.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer select-none touch-manipulation ${
+            {/* Column 2: Dynamic Image (Pre-rendered Stacked Cross-fade) */}
+            <div className="lg:col-span-6 relative aspect-[16/11] w-full max-w-[540px] overflow-hidden rounded-none shadow-lg bg-[#0A0A0A]">
+              {METHOD_PILLARS.map((pillar, idx) => (
+                <div
+                  key={pillar.id}
+                  className={`absolute inset-0 transition-opacity duration-400 ease-out transform-gpu ${
                     idx === activeIndex
-                      ? "w-8 bg-[#FE4C02]"
-                      : "w-2.5 bg-[#0A0A0A]/20 hover:bg-[#0A0A0A]/40"
+                      ? "opacity-100 z-10 scale-100"
+                      : "opacity-0 z-0 scale-[1.02] pointer-events-none"
                   }`}
-                  aria-label={`Go to step ${idx + 1}`}
-                />
+                >
+                  <Image
+                    src={pillar.image}
+                    alt={pillar.alt}
+                    fill
+                    priority={idx === 0}
+                    className="object-cover object-center contrast-[1.05]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Column 3: Title & Description Text (Smooth Stacked Transition) */}
+            <div className="lg:col-span-4 relative flex flex-col justify-center min-h-[160px] sm:min-h-[180px]">
+              {METHOD_PILLARS.map((pillar, idx) => (
+                <div
+                  key={pillar.id}
+                  className={`transition-all duration-300 ease-out ${
+                    idx === activeIndex
+                      ? "opacity-100 translate-y-0 relative z-10"
+                      : "opacity-0 translate-y-2 pointer-events-none absolute inset-0 z-0"
+                  }`}
+                >
+                  <h3 className="m-0 font-semibold text-[clamp(28px,3vw,44px)] leading-[1.08] tracking-[-0.035em] text-[#0A0A0A]">
+                    {pillar.titleLine1 && pillar.titleLine2 ? (
+                      <>
+                        <span className="block">{pillar.titleLine1}</span>
+                        <span className="block">{pillar.titleLine2}</span>
+                      </>
+                    ) : (
+                      pillar.title
+                    )}
+                  </h3>
+                  <p className="m-0 mt-4 font-normal text-[15px] leading-[1.65] text-[#57544F] max-w-[360px]">
+                    {pillar.description}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
-
-          {/* Generous Scroll-Driving Spacers so Fast Scrollers Don't Miss Any Points */}
-          <div className="h-[450px] lg:h-[750px]" />
-          <div className="h-[450px] lg:h-[750px]" />
-          <div className="h-[450px] lg:h-[750px]" />
         </div>
       </div>
 
@@ -280,23 +285,23 @@ export function MethodSection() {
           </div>
         </div>
 
-        {/* Left & Right Arrow Navigation Controls */}
+        {/* Left & Right Arrow Navigation Controls (Consistent Square Bordered Style) */}
         <button
           type="button"
           onClick={prevSlide}
           aria-label="Previous image"
-          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] backdrop-blur-md border border-white/15 flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg active:scale-95 opacity-80 hover:opacity-100"
+          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 border border-white/20 bg-[#0A0A0A]/60 backdrop-blur-md flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-white shadow-lg active:scale-95"
         >
-          <ChevronLeft size={22} />
+          <ChevronLeft size={18} />
         </button>
 
         <button
           type="button"
           onClick={nextSlide}
           aria-label="Next image"
-          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] backdrop-blur-md border border-white/15 flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg active:scale-95 opacity-80 hover:opacity-100"
+          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 border border-white/20 bg-[#0A0A0A]/60 backdrop-blur-md flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-white shadow-lg active:scale-95"
         >
-          <ChevronRight size={22} />
+          <ChevronRight size={18} />
         </button>
 
         {/* Curved Pill Carousel Indicators at Bottom */}
