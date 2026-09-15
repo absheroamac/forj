@@ -1,19 +1,13 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useScroll, useMotionValueEvent } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { METHOD_PILLARS } from "@/data/pillars";
 import { Reveal } from "@/components/animations/Reveal";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-const PARALLAX_SLIDES = [
+const SHOWCASE_SLIDES = [
   {
     id: "meydan-exterior",
     image: "/images/meydan.webp",
@@ -46,101 +40,11 @@ const PARALLAX_SLIDES = [
 
 export function MethodSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [mobileSlideIndex, setMobileSlideIndex] = useState(0);
-  const [desktopSlideIndex, setDesktopSlideIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
 
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
   const pillarsContainerRef = useRef<HTMLDivElement>(null);
-
-  // GSAP ScrollTrigger Horizontal Parallax - Active ONLY on Desktop
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 1024px)", () => {
-        const panels = gsap.utils.toArray<HTMLElement>(".parallax-panel-desktop");
-        const totalPanels = panels.length;
-        if (!panels.length || !trackRef.current || !sectionRef.current) return;
-
-        // Master horizontal tween pinning the section on desktop
-        const masterTween = gsap.to(panels, {
-          xPercent: -100 * (totalPanels - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            scrub: 0.8,
-            anticipatePin: 1,
-            fastScrollEnd: true,
-            onUpdate: (self) => {
-              const currentSlide = Math.min(
-                Math.round(self.progress * (totalPanels - 1)),
-                totalPanels - 1
-              );
-              setDesktopSlideIndex(currentSlide);
-            },
-            snap: {
-              snapTo: 1 / (totalPanels - 1),
-              duration: { min: 0.2, max: 0.5 },
-              ease: "power1.inOut",
-            },
-            end: () => `+=${window.innerWidth * (totalPanels - 1)}`,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        // Individual image parallax inside each panel
-        panels.forEach((panel) => {
-          const img = panel.querySelector(".parallax-inner-img");
-          if (img) {
-            gsap.fromTo(
-              img,
-              { xPercent: -5 },
-              {
-                xPercent: 5,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: panel,
-                  containerAnimation: masterTween,
-                  start: "left right",
-                  end: "right left",
-                  scrub: true,
-                },
-              }
-            );
-          }
-        });
-      });
-
-      return () => mm.revert();
-    },
-    { scope: sectionRef }
-  );
-
-  // Mobile horizontal scroll tracking
-  const handleMobileScroll = () => {
-    if (!mobileScrollRef.current) return;
-    const { scrollLeft, clientWidth } = mobileScrollRef.current;
-    if (clientWidth > 0) {
-      const newIndex = Math.min(
-        Math.max(Math.round(scrollLeft / clientWidth), 0),
-        PARALLAX_SLIDES.length - 1
-      );
-      if (newIndex !== mobileSlideIndex) {
-        setMobileSlideIndex(newIndex);
-      }
-    }
-  };
-
-  const scrollToMobileSlide = (idx: number) => {
-    if (!mobileScrollRef.current) return;
-    mobileScrollRef.current.scrollTo({
-      left: idx * mobileScrollRef.current.clientWidth,
-      behavior: "smooth",
-    });
-  };
 
   // Pillars Story Scroll (Framer Motion)
   const { scrollYProgress: pillarProgress } = useScroll({
@@ -158,145 +62,53 @@ export function MethodSection() {
     }
   });
 
+  // Auto-slide effect for Meydan Carousel (advances every 4.5 seconds when not hovered)
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % SHOWCASE_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  // Arrow keys listener for keyboard carousel navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        setSlideIndex((prev) => (prev === 0 ? SHOWCASE_SLIDES.length - 1 : prev - 1));
+      } else if (e.key === "ArrowRight") {
+        setSlideIndex((prev) => (prev + 1) % SHOWCASE_SLIDES.length);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const nextSlide = () => {
+    setSlideIndex((prev) => (prev + 1) % SHOWCASE_SLIDES.length);
+  };
+
+  const prevSlide = () => {
+    setSlideIndex((prev) => (prev === 0 ? SHOWCASE_SLIDES.length - 1 : prev - 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diffX = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diffX) > 45) {
+      if (diffX > 0) nextSlide();
+      else prevSlide();
+    }
+    touchStartX.current = null;
+  };
+
   return (
     <section id="method" className="bg-white text-[#0A0A0A] relative">
-      {/* 1. Full-Screen Showcase: Desktop GSAP Parallax (lg:block) + Mobile Native Swipe (lg:hidden) */}
-      
-      {/* DESKTOP VIEW: GSAP Horizontal Pinning */}
-      <div
-        ref={sectionRef}
-        className="hidden lg:block relative w-full h-screen overflow-hidden bg-[#0A0A0A]"
-      >
-        <div
-          ref={trackRef}
-          className="flex flex-row h-screen w-[400vw] will-change-transform transform-gpu"
-        >
-          {PARALLAX_SLIDES.map((slide, idx) => (
-            <div
-              key={slide.id}
-              className="parallax-panel-desktop relative w-screen h-screen min-w-[100vw] min-h-[100vh] flex-none overflow-hidden bg-[#0A0A0A]"
-            >
-              <div className="parallax-inner-img relative w-[114vw] h-full -left-[7vw] will-change-transform transform-gpu">
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  priority={idx === 0}
-                  sizes="100vw"
-                  className="object-cover object-center brightness-[0.92] contrast-[1.06]"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
-            </div>
-          ))}
-        </div>
-
-        {/* Centered Floating 2-Container Dojo Badge (Desktop) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 select-none">
-          <div className="pointer-events-auto flex items-stretch gap-2 sm:gap-2.5 group/badge cursor-pointer hover:scale-[1.04] transition-transform duration-300 shadow-2xl select-none">
-            <div className="bg-white text-[#0A0A0A] px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center shadow-lg select-none">
-              <span className="font-semibold text-[14px] sm:text-[16px] tracking-[-0.01em] whitespace-nowrap select-none">
-                Dojo in Meydan, Dubai
-              </span>
-            </div>
-            <div className="bg-white w-[46px] sm:w-[54px] flex items-center justify-center shadow-lg flex-none select-none">
-              <div className="relative w-[18px] sm:w-[20px] h-[14px] sm:h-[16px] transition-transform duration-300 group-hover/badge:translate-x-1">
-                <Image
-                  src="/arrow-orange.svg"
-                  alt="Arrow"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Curved Pill Carousel Indicator at Bottom (Desktop) */}
-        <div className="absolute bottom-8 inset-x-0 flex items-center justify-center z-30 pointer-events-none select-none">
-          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 pointer-events-auto shadow-lg">
-            {PARALLAX_SLIDES.map((_, idx) => (
-              <div
-                key={idx}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  desktopSlideIndex === idx
-                    ? "w-8 bg-[#FE4C02]"
-                    : "w-2.5 bg-white/40"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* MOBILE VIEW: Hardware-Accelerated Native Touch Swipe Carousel */}
-      <div className="lg:hidden relative w-full bg-[#0A0A0A] overflow-hidden">
-        <div
-          ref={mobileScrollRef}
-          onScroll={handleMobileScroll}
-          className="flex flex-row w-full overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
-          {PARALLAX_SLIDES.map((slide, idx) => (
-            <div
-              key={slide.id}
-              className="w-full min-w-full h-[65vh] min-h-[400px] max-h-[560px] relative snap-center flex-none overflow-hidden bg-[#0A0A0A]"
-            >
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                fill
-                priority={idx === 0}
-                sizes="100vw"
-                className="object-cover object-center brightness-[0.92] contrast-[1.06]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/30 pointer-events-none" />
-            </div>
-          ))}
-        </div>
-
-        {/* Centered Floating 2-Container Dojo Badge (Mobile) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 select-none">
-          <div className="pointer-events-auto flex items-stretch gap-2 group/badge shadow-2xl select-none active:scale-95 transition-transform duration-200">
-            <div className="bg-white text-[#0A0A0A] px-5 py-3 flex items-center justify-center shadow-lg select-none">
-              <span className="font-semibold text-[13.5px] tracking-[-0.01em] whitespace-nowrap select-none">
-                Dojo in Meydan, Dubai
-              </span>
-            </div>
-            <div className="bg-white w-[42px] flex items-center justify-center shadow-lg flex-none select-none">
-              <div className="relative w-[16px] h-[13px]">
-                <Image
-                  src="/arrow-orange.svg"
-                  alt="Arrow"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Curved Pill Carousel Indicator at Bottom (Mobile) */}
-        <div className="absolute bottom-5 inset-x-0 flex items-center justify-center z-20 pointer-events-none select-none">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 pointer-events-auto shadow-lg">
-            {PARALLAX_SLIDES.map((_, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => scrollToMobileSlide(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  mobileSlideIndex === idx
-                    ? "w-7 bg-[#FE4C02]"
-                    : "w-2 bg-white/40"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Section Headline & Method Story Narrative */}
+      {/* 1. Section Headline & Method Story Narrative */}
       <div className="w-full max-w-[1440px] mx-auto px-[clamp(16px,3vw,56px)] pt-[clamp(64px,8vw,120px)] pb-[clamp(48px,6vw,96px)]">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-[clamp(48px,6vw,88px)]">
           <Reveal duration={0.7} className="w-full lg:w-auto flex-none">
@@ -315,7 +127,7 @@ export function MethodSection() {
           </Reveal>
         </div>
 
-        {/* 3. Interactive Storytelling Showcase (Pillars) */}
+        {/* 2. Interactive Storytelling Showcase (Pillars 01, 02, 03) */}
         <div ref={pillarsContainerRef} className="relative min-h-[1600px] lg:min-h-[2600px]">
           {/* Showcase Content */}
           <div className="sticky top-20 sm:top-24 py-6 sm:py-8 bg-white z-20">
@@ -410,6 +222,100 @@ export function MethodSection() {
           <div className="h-[450px] lg:h-[750px]" />
           <div className="h-[450px] lg:h-[750px]" />
           <div className="h-[450px] lg:h-[750px]" />
+        </div>
+      </div>
+
+      {/* 3. Meydan Image Showcase Carousel (Positioned Below Pillars Section) */}
+      <div
+        className="relative w-full h-[65vh] min-h-[440px] md:h-[80vh] md:min-h-[580px] max-h-[850px] overflow-hidden bg-[#0A0A0A] select-none group/carousel"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {/* Pre-rendered Stacked Slides with Ultra-Smooth Crossfade & Scale */}
+        {SHOWCASE_SLIDES.map((slide, idx) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 w-full h-full transition-all duration-700 ease-out transform-gpu ${
+              slideIndex === idx
+                ? "opacity-100 scale-100 z-10"
+                : "opacity-0 scale-[1.03] z-0 pointer-events-none"
+            }`}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority={idx === 0}
+              sizes="100vw"
+              className="object-cover object-center brightness-[0.92] contrast-[1.06]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none" />
+          </div>
+        ))}
+
+        {/* Centered Floating Badge (Fitness Center in Meydan) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 select-none">
+          <div
+            onClick={nextSlide}
+            className="pointer-events-auto flex items-stretch gap-2 sm:gap-2.5 group/badge cursor-pointer hover:scale-[1.04] active:scale-95 transition-all duration-300 shadow-2xl select-none"
+            title="Click for next image (or use arrow keys)"
+          >
+            <div className="bg-white text-[#0A0A0A] px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center shadow-lg select-none">
+              <span className="font-semibold text-[14px] sm:text-[16px] tracking-[-0.01em] whitespace-nowrap select-none">
+                Fitness Center in Meydan
+              </span>
+            </div>
+            <div className="bg-white w-[46px] sm:w-[54px] flex items-center justify-center shadow-lg flex-none select-none">
+              <div className="relative w-[18px] sm:w-[20px] h-[14px] sm:h-[16px] transition-transform duration-300 group-hover/badge:translate-x-1">
+                <Image
+                  src="/arrow-orange.svg"
+                  alt="Arrow"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Left & Right Arrow Navigation Controls */}
+        <button
+          type="button"
+          onClick={prevSlide}
+          aria-label="Previous image"
+          className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] backdrop-blur-md border border-white/15 flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg active:scale-95 opacity-80 hover:opacity-100"
+        >
+          <ChevronLeft size={22} />
+        </button>
+
+        <button
+          type="button"
+          onClick={nextSlide}
+          aria-label="Next image"
+          className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] backdrop-blur-md border border-white/15 flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg active:scale-95 opacity-80 hover:opacity-100"
+        >
+          <ChevronRight size={22} />
+        </button>
+
+        {/* Curved Pill Carousel Indicators at Bottom */}
+        <div className="absolute bottom-6 sm:bottom-8 inset-x-0 flex items-center justify-center z-30 pointer-events-none select-none">
+          <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-white/10 pointer-events-auto shadow-xl">
+            {SHOWCASE_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setSlideIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  slideIndex === idx
+                    ? "w-8 bg-[#FE4C02]"
+                    : "w-2.5 bg-white/40 hover:bg-white/70"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
