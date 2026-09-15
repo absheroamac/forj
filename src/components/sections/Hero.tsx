@@ -62,9 +62,11 @@ export function Hero({}: HeroProps) {
               </Reveal>
 
               <Reveal duration={0.8} delay={0.2}>
-                <h1 className="m-0 font-semibold text-[clamp(34px,4.8vw,78px)] leading-[0.98] tracking-[-0.04em] text-white text-left whitespace-normal">
-                  <span className="block">Dubai&apos;s first coached</span>
-                  <span className="block mt-1 sm:mt-1.5">
+                <h1 className="m-0 font-semibold text-[clamp(26px,5.2vw,56px)] md:text-[clamp(32px,3.4vw,58px)] xl:text-[clamp(38px,3.6vw,64px)] leading-[1.02] tracking-[-0.035em] text-white text-left">
+                  <span className="block whitespace-nowrap">
+                    Dubai&apos;s first coached
+                  </span>
+                  <span className="block whitespace-nowrap mt-1 sm:mt-2">
                     strength dojo<span className="text-[#FE4C02]">.</span>
                   </span>
                 </h1>
@@ -94,7 +96,7 @@ export function Hero({}: HeroProps) {
                     size="lg"
                     className="bg-[#0A0A0A] text-white border border-[#FE4C02] font-semibold text-[11.5px] md:text-[12.5px] tracking-[0.1em] uppercase px-7 py-3.5 md:py-4 min-h-[48px] hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
                   >
-                    JOIN THE FOUNDING LIST
+                    BE A FOUNDING MEMBER
                   </Button>
                   <Button
                     href="#waitlist"

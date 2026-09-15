@@ -97,7 +97,7 @@ export function Navbar() {
               size="sm"
               className="text-[11.5px] tracking-[0.14em] font-semibold uppercase px-5 py-2.5 min-h-[38px] border-[#FE4C02] text-white hover:bg-[#FE4C02] hover:text-[#0A0A0A]"
             >
-              JOIN THE FOUNDING LIST
+              BE A FOUNDING MEMBER
             </Button>
           </div>
 
@@ -142,7 +142,7 @@ export function Navbar() {
                   className="w-full text-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  JOIN THE FOUNDING LIST
+                  BE A FOUNDING MEMBER
                 </Button>
               </div>
             </motion.div>
