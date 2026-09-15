@@ -23,9 +23,9 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, phone } = body;
 
-    if (!name || !email || !phone) {
+    if (!name || !phone) {
       return NextResponse.json(
-        { error: "Name, email, and phone number are required." },
+        { error: "Name and phone number are required." },
         { status: 400 }
       );
     }
@@ -33,10 +33,11 @@ export async function POST(request: Request) {
     const trimmedPhone = phone.trim();
     // Prefix phone with a single quote so Google Sheets treats it as plain text instead of a formula error on leading '+'
     const safePhone = trimmedPhone.startsWith("'") ? trimmedPhone : `'${trimmedPhone}`;
+    const safeEmail = email && typeof email === "string" && email.trim() ? email.trim() : "-";
 
     const payload = {
       name: name.trim(),
-      email: email.trim(),
+      email: safeEmail,
       phone: safePhone,
       submittedAt: getDubaiFormattedTimestamp(),
       source: "Opening Updates",

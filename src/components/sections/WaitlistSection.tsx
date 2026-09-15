@@ -30,12 +30,12 @@ export function WaitlistSection() {
       setError("Please enter your name.");
       return;
     }
-    if (!formData.email.trim() || !formData.email.includes("@")) {
-      setError("Please enter a valid email address.");
-      return;
-    }
     if (!formData.phone.trim()) {
       setError("Please enter your phone / WhatsApp number.");
+      return;
+    }
+    if (formData.email.trim() && !formData.email.includes("@")) {
+      setError("Please enter a valid email address.");
       return;
     }
     if (!agreed) {
@@ -86,8 +86,11 @@ export function WaitlistSection() {
               Not ready to commit
               <span className="text-[#FE4C02]">?</span>
             </h2>
-            <p className="m-0 mt-5 font-normal text-[14.5px] md:text-[15px] leading-[1.65] text-[#57544F] max-w-[420px]">
-              Get on the general waitlist for opening updates — separate from the founding list, no commitment either way.
+            <p className="m-0 mt-5 font-normal text-[15px] md:text-[16px] leading-[1.65] text-[#57544F] max-w-[460px]">
+              Stay in the loop. Leave your details to be the first to know when we release our official schedule, announce coaching cohorts, and open doors in Meydan.
+            </p>
+            <p className="m-0 mt-3 font-normal text-[13.5px] leading-[1.6] text-[#8C8A86] max-w-[440px]">
+              No pressure and no commitments — just first access and opening updates straight to your phone.
             </p>
           </Reveal>
 
@@ -122,14 +125,18 @@ export function WaitlistSection() {
                   {/* Summary details card */}
                   <div className="bg-white border border-[#0A0A0A]/8 p-4 flex flex-col gap-2 mt-1 text-[13.5px]">
                     <div className="flex items-center justify-between text-[#8C8A86]">
-                      <span className="font-medium text-[11.5px] uppercase tracking-wider">Email</span>
-                      <span className="font-medium text-[#0A0A0A]">{formData.email}</span>
-                    </div>
-                    <div className="h-[1px] bg-[#0A0A0A]/5" />
-                    <div className="flex items-center justify-between text-[#8C8A86]">
                       <span className="font-medium text-[11.5px] uppercase tracking-wider">Phone</span>
                       <span className="font-medium text-[#0A0A0A]">{formData.phone}</span>
                     </div>
+                    {formData.email && (
+                      <>
+                        <div className="h-[1px] bg-[#0A0A0A]/5" />
+                        <div className="flex items-center justify-between text-[#8C8A86]">
+                          <span className="font-medium text-[11.5px] uppercase tracking-wider">Email</span>
+                          <span className="font-medium text-[#0A0A0A]">{formData.email}</span>
+                        </div>
+                      </>
+                    )}
                   </div>
 
                   <button
@@ -155,7 +162,7 @@ export function WaitlistSection() {
                       htmlFor="waitlist-name"
                       className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
                     >
-                      Full Name
+                      Full Name <span className="text-[#FE4C02]">*</span>
                     </label>
                     <input
                       id="waitlist-name"
@@ -169,35 +176,15 @@ export function WaitlistSection() {
                     />
                   </div>
 
-                  {/* Email & Phone Fields (Single Row) */}
+                  {/* Phone & Email Fields (Single Row) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Email Field */}
-                    <div>
-                      <label
-                        htmlFor="waitlist-email"
-                        className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
-                      >
-                        Email Address
-                      </label>
-                      <input
-                        id="waitlist-email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="you@email.com"
-                        className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
-                      />
-                    </div>
-
-                    {/* Phone Field */}
+                    {/* Phone Field (Mandatory) */}
                     <div>
                       <label
                         htmlFor="waitlist-phone"
                         className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
                       >
-                        Phone / WhatsApp
+                        Phone / WhatsApp <span className="text-[#FE4C02]">*</span>
                       </label>
                       <input
                         id="waitlist-phone"
@@ -207,6 +194,25 @@ export function WaitlistSection() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+971 50 123 4567"
+                        className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
+                      />
+                    </div>
+
+                    {/* Email Field (Optional) */}
+                    <div>
+                      <label
+                        htmlFor="waitlist-email"
+                        className="block font-semibold text-[11.5px] tracking-[0.06em] uppercase text-[#57544F] mb-1.5"
+                      >
+                        Email Address <span className="text-[#8C8A86] font-normal normal-case text-[11px]">(Optional)</span>
+                      </label>
+                      <input
+                        id="waitlist-email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@email.com"
                         className="w-full font-normal text-[15px] text-[#0A0A0A] placeholder-[#9E9B97] bg-[#F7F7F6] border border-[#0A0A0A]/15 px-3.5 py-3 outline-none focus:border-[#FE4C02] focus:bg-white transition-all rounded-none"
                       />
                     </div>
