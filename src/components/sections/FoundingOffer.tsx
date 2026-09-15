@@ -98,7 +98,8 @@ export function FoundingOffer({
             <Reveal duration={0.7} delay={0.3}>
               <div className="mt-6 pt-2">
                 <Button
-                  href="#waitlist"
+                  href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
+                  target="_blank"
                   variant="primary"
                   size="lg"
                   className="bg-[#FE4C02] text-[#0A0A0A] font-semibold text-[12px] md:text-[13px] tracking-[0.08em] uppercase px-8 py-4 min-h-[50px] hover:bg-white hover:text-[#0A0A0A]"

@@ -73,7 +73,9 @@ export function FoundingRateBar({
 
             {/* Cell 4: Direct Interactive CTA */}
             <Link
-              href="#offer"
+              href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group p-5 lg:px-7 lg:py-6 flex items-center justify-between bg-white/[0.02] hover:bg-[#FE4C02] transition-colors duration-200 cursor-pointer"
             >
               <div className="flex flex-col gap-1">

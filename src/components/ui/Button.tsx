@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string;
+  target?: string;
+  rel?: string;
   variant?: "primary" | "secondary" | "dark" | "outline" | "link";
   size?: "sm" | "md" | "lg";
   className?: string;
@@ -15,6 +17,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export function Button({
   href,
+  target,
+  rel,
   variant = "primary",
   size = "md",
   className = "",
@@ -58,7 +62,13 @@ export function Button({
         whileTap={{ scale: 0.985 }}
         className="inline-block"
       >
-        <Link href={href} className={combinedClasses} scroll={isAnchor}>
+        <Link
+          href={href}
+          target={target}
+          rel={rel || (target === "_blank" ? "noopener noreferrer" : undefined)}
+          className={combinedClasses}
+          scroll={isAnchor}
+        >
           {children}
         </Link>
       </motion.div>

@@ -138,7 +138,9 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
 
               {/* Item 3: Claim founding membership Box Button */}
               <Link
-                href="#offer"
+                href="https://bookings.vibefam.com/forjfitness/packages/pr_i8aHce"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border border-white/20 hover:border-[#FE4C02] hover:bg-[#FE4C02] text-white hover:text-[#0A0A0A] transition-all duration-200 cursor-pointer lg:ml-auto rounded-none"
               >
                 <span className="font-bold text-[14px] sm:text-[15px] lg:text-[16px] tracking-[0.04em] uppercase not-italic leading-none">
