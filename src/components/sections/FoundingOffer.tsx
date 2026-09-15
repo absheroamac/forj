@@ -54,13 +54,13 @@ export function FoundingOffer({
             <Reveal duration={0.7} delay={0.1}>
               <div className="flex flex-col pb-8">
                 <div className="flex items-baseline gap-3 sm:gap-4 flex-wrap">
-                  {/* Striked off 1,400 with AED on the left side */}
-                  <div className="flex items-baseline gap-1.5 text-[#8C8A86] select-none">
-                    <span className="text-[20px] sm:text-[24px] font-medium tracking-tight text-white/80 not-italic">
+                  {/* Striked off 1,499 with AED on the left side (40% smaller) */}
+                  <div className="flex items-baseline gap-1 text-[#8C8A86] select-none">
+                    <span className="text-[13px] sm:text-[15px] font-medium tracking-tight text-white/70 not-italic">
                       AED
                     </span>
-                    <span className="text-[clamp(32px,4vw,56px)] font-light sm:font-normal leading-none tracking-[-0.03em] line-through decoration-[#FE4C02] decoration-2">
-                      1,400
+                    <span className="text-[clamp(20px,2.4vw,34px)] font-light sm:font-normal leading-none tracking-[-0.03em] line-through decoration-[#FE4C02] decoration-2">
+                      1,499
                     </span>
                   </div>
 
