@@ -63,10 +63,7 @@ export function Hero({}: HeroProps) {
 
               <Reveal duration={0.8} delay={0.2}>
                 <h1 className="m-0 font-semibold text-[clamp(38px,4.8vw,78px)] leading-[0.98] tracking-[-0.04em] text-white text-left whitespace-normal">
-                  A studio with a dojo philosophy.
-                  <span className="block text-white/90 mt-1">
-                    Not a gym<span className="text-[#FE4C02]">.</span>
-                  </span>
+                  Dubai&apos;s first coached strength dojo<span className="text-[#FE4C02]">.</span>
                 </h1>
               </Reveal>
             </div>
