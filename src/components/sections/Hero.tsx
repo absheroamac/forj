@@ -2,8 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/animations/Reveal";
 
@@ -12,11 +10,11 @@ interface HeroProps {
   seats?: number;
 }
 
-export function Hero({ price = 999, seats = 20 }: HeroProps) {
+export function Hero({}: HeroProps) {
   return (
     <section
       id="top"
-      className="relative bg-[#0A0A0A] w-full min-h-[calc(100vh-74px)] flex flex-col justify-between overflow-hidden border-b border-white/[0.08]"
+      className="relative bg-[#0A0A0A] w-full min-h-[calc(100vh-74px)] flex flex-col justify-center overflow-hidden border-b border-white/[0.08]"
     >
       {/* 2-Column Split Background: Left Image (full top-to-bottom) + Right Black */}
       <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 w-full h-full pointer-events-none">
@@ -102,40 +100,6 @@ export function Hero({ price = 999, seats = 20 }: HeroProps) {
               </div>
             </Reveal>
           </div>
-        </div>
-      </div>
-
-      {/* Integrated Architectural Founding Rate Bar Stripe at Bottom of Hero */}
-      <div className="relative z-10 w-full border-t border-white/10 bg-[#0A0A0A]/95 backdrop-blur-md py-2 sm:py-3">
-        <div className="w-full max-w-[1600px] mx-auto px-[clamp(16px,2.5vw,48px)]">
-          <Reveal duration={0.6}>
-            <div className="flex flex-wrap sm:flex-nowrap items-center gap-y-4 gap-x-6 sm:gap-x-8">
-              {/* Item 1: 20 founding memberships */}
-              <div className="flex items-center gap-3 sm:gap-4 py-2 pr-4 lg:pr-8">
-                <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
-                  {seats}
-                </span>
-                <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span className="text-white font-medium">founding memberships.</span>
-                  <span>Once. Never repeated.</span>
-                </div>
-              </div>
-
-              {/* Hairline Divider */}
-              <div className="h-8 lg:h-10 border-r border-white/15 hidden sm:block flex-none" />
-
-              {/* Item 2: 8 to a class */}
-              <div className="flex items-center gap-3 sm:gap-4 py-2 px-2 sm:px-4 lg:px-8">
-                <span className="font-bold text-[clamp(34px,3.8vw,52px)] leading-none text-white tracking-[-0.04em] not-italic flex-none">
-                  8
-                </span>
-                <div className="flex flex-col text-[12px] sm:text-[12.5px] leading-[1.3] text-[#8C8A86] not-italic">
-                  <span className="text-white font-medium">to a class,</span>
-                  <span>8-week cycles</span>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </div>
     </section>
