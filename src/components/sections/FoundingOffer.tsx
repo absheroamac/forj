@@ -53,12 +53,6 @@ export function FoundingOffer({
             {/* Price Row: Strikethrough AED 1,400 on left side of Actual Price AED 999 /month */}
             <Reveal duration={0.7} delay={0.1}>
               <div className="flex flex-col pb-8">
-                <div className="mb-3">
-                  <span className="bg-[#FE4C02]/15 text-[#FE4C02] border border-[#FE4C02]/30 text-[11px] sm:text-[11.5px] font-bold px-2.5 py-1 tracking-wider uppercase inline-block">
-                    FOUNDING OFFER · FIRST-ATTENDEE MEMBERS
-                  </span>
-                </div>
-
                 <div className="flex items-baseline gap-3 sm:gap-4 flex-wrap">
                   {/* Striked off 1,400 with AED on the left side */}
                   <div className="flex items-baseline gap-1.5 text-[#8C8A86] select-none">
@@ -81,9 +75,14 @@ export function FoundingOffer({
                   </div>
                 </div>
 
-                <span className="text-[12.5px] font-mono tracking-wider text-[#8C8A86] uppercase mt-2">
-                  12-MONTH FOUNDING TERM · LOCKED RATE FOR FIRST-ATTENDEE MEMBERS
-                </span>
+                <div className="flex flex-col gap-1 mt-3">
+                  <span className="text-[13px] font-mono font-medium tracking-wider text-[#FE4C02] uppercase">
+                    FOUNDING OFFER · FIRST-ATTENDEE MEMBERS
+                  </span>
+                  <span className="text-[12px] font-mono tracking-wider text-[#8C8A86] uppercase">
+                    12-MONTH FOUNDING TERM · LOCKED RATE
+                  </span>
+                </div>
               </div>
             </Reveal>
 
