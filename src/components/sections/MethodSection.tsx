@@ -168,42 +168,20 @@ export function MethodSection() {
                 ))}
               </div>
 
-              {/* Progress indicators and Consistent Arrow Navigation */}
-              <div className="flex items-center gap-4 mt-2">
-                <div className="flex items-center gap-1.5 select-none">
-                  {METHOD_PILLARS.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveIndex(idx)}
-                      className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer select-none touch-manipulation ${
-                        idx === activeIndex
-                          ? "w-8 bg-[#FE4C02]"
-                          : "w-2.5 bg-[#0A0A0A]/20 hover:bg-[#0A0A0A]/40"
-                      }`}
-                      aria-label={`Go to step ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Consistent Arrow Controls */}
-                <div className="flex items-center gap-1.5">
+              {/* Progress indicators */}
+              <div className="flex items-center gap-1.5 select-none mt-2">
+                {METHOD_PILLARS.map((_, idx) => (
                   <button
-                    type="button"
-                    onClick={prevPillar}
-                    aria-label="Previous method pillar"
-                    className="w-10 h-10 border border-[#0A0A0A]/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-[#0A0A0A] active:scale-95"
-                  >
-                    <ChevronLeft size={18} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={nextPillar}
-                    aria-label="Next method pillar"
-                    className="w-10 h-10 border border-[#0A0A0A]/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-[#0A0A0A] active:scale-95"
-                  >
-                    <ChevronRight size={18} />
-                  </button>
-                </div>
+                    key={idx}
+                    onClick={() => setActiveIndex(idx)}
+                    className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer select-none touch-manipulation ${
+                      idx === activeIndex
+                        ? "w-8 bg-[#FE4C02]"
+                        : "w-2.5 bg-[#0A0A0A]/20 hover:bg-[#0A0A0A]/40"
+                    }`}
+                    aria-label={`Go to step ${idx + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
@@ -230,32 +208,54 @@ export function MethodSection() {
               ))}
             </div>
 
-            {/* Column 3: Title & Description Text (Smooth Stacked Transition) */}
-            <div className="lg:col-span-4 relative flex flex-col justify-center min-h-[160px] sm:min-h-[180px]">
-              {METHOD_PILLARS.map((pillar, idx) => (
-                <div
-                  key={pillar.id}
-                  className={`transition-all duration-300 ease-out ${
-                    idx === activeIndex
-                      ? "opacity-100 translate-y-0 relative z-10"
-                      : "opacity-0 translate-y-2 pointer-events-none absolute inset-0 z-0"
-                  }`}
+            {/* Column 3: Title & Description Text + Arrows below text */}
+            <div className="lg:col-span-4 flex flex-col justify-center min-h-[190px] sm:min-h-[210px]">
+              <div className="relative min-h-[130px] sm:min-h-[150px]">
+                {METHOD_PILLARS.map((pillar, idx) => (
+                  <div
+                    key={pillar.id}
+                    className={`transition-all duration-300 ease-out ${
+                      idx === activeIndex
+                        ? "opacity-100 translate-y-0 relative z-10"
+                        : "opacity-0 translate-y-2 pointer-events-none absolute inset-0 z-0"
+                    }`}
+                  >
+                    <h3 className="m-0 font-semibold text-[clamp(28px,3vw,44px)] leading-[1.08] tracking-[-0.035em] text-[#0A0A0A]">
+                      {pillar.titleLine1 && pillar.titleLine2 ? (
+                        <>
+                          <span className="block">{pillar.titleLine1}</span>
+                          <span className="block">{pillar.titleLine2}</span>
+                        </>
+                      ) : (
+                        pillar.title
+                      )}
+                    </h3>
+                    <p className="m-0 mt-4 font-normal text-[15px] leading-[1.65] text-[#57544F] max-w-[360px]">
+                      {pillar.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Consistent Arrow Controls Below Text */}
+              <div className="flex items-center gap-2 mt-5">
+                <button
+                  type="button"
+                  onClick={prevPillar}
+                  aria-label="Previous method pillar"
+                  className="w-10 h-10 border border-[#0A0A0A]/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-[#0A0A0A] active:scale-95"
                 >
-                  <h3 className="m-0 font-semibold text-[clamp(28px,3vw,44px)] leading-[1.08] tracking-[-0.035em] text-[#0A0A0A]">
-                    {pillar.titleLine1 && pillar.titleLine2 ? (
-                      <>
-                        <span className="block">{pillar.titleLine1}</span>
-                        <span className="block">{pillar.titleLine2}</span>
-                      </>
-                    ) : (
-                      pillar.title
-                    )}
-                  </h3>
-                  <p className="m-0 mt-4 font-normal text-[15px] leading-[1.65] text-[#57544F] max-w-[360px]">
-                    {pillar.description}
-                  </p>
-                </div>
-              ))}
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextPillar}
+                  aria-label="Next method pillar"
+                  className="w-10 h-10 border border-[#0A0A0A]/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:border-[#FE4C02] hover:bg-[#FE4C02] hover:text-[#0A0A0A] text-[#0A0A0A] active:scale-95"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
